@@ -1,112 +1,257 @@
 ---
+import "../styles/global.css";
 import '../styles/global.css';
+import SystemCore from '../components/SystemCore.jsx';
 ---
 
 <html lang="hu">
 	<head>
-		<meta charset="utf-8" /> 
+		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Kovács János - System</title>
 	</head>
-	<body class="min-h-screen relative selection:bg-nothing-red selection:text-white text-black py-12 px-6">
-		
+	<body
+		class="min-h-screen relative selection:bg-nothing-red selection:text-white text-black py-12 px-6"
+	>
 		<div class="dot-grid-overlay"></div>
 
-		<header class="max-w-7xl mx-auto mb-8 flex justify-between items-center font-mono text-xs text-gray-500 uppercase tracking-widest">
+		<header
+			class="max-w-7xl mx-auto mb-8 flex justify-between items-center font-mono text-xs text-gray-500 uppercase tracking-widest"
+		>
 			<div>OS_VERSION: 1.0</div>
 			<div class="flex items-center gap-2">
-				<div class="w-2 h-2 rounded-full bg-nothing-red animate-pulse"></div>
+				<div class="w-2 h-2 rounded-full bg-nothing-red animate-pulse">
+				</div>
 				<span>System Online</span>
 			</div>
 		</header>
 
-		<main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10">
-			
-			<div class="md:col-span-8 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm flex flex-col justify-center">
-				<div class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-4">[ 01_Profile ]</div>
+		<main
+			class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10"
+		>
+			<div
+				class="md:col-span-8 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm flex flex-col justify-center"
+			>
+				<div
+					class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-4"
+				>
+					[ 01_Profile ]
+				</div>
 				<h1 class="font-serif text-5xl mb-4">Kovács János</h1>
 				<p class="font-sans text-lg text-gray-700 leading-relaxed">
-					Tapasztalt Full Stack fejlesztő vagyok, aki hisz a tiszta kódban és a "megfelelő eszközt a feladathoz" elvben. Erős alapokkal rendelkezem a .NET ökoszisztémában, miközben modern, interaktív frontendeket építek.
+					Tapasztalt Full Stack fejlesztő vagyok, aki hisz a tiszta
+					kódban és a "megfelelő eszközt a feladathoz" elvben. Erős
+					alapokkal rendelkezem a .NET ökoszisztémában, miközben
+					modern, interaktív frontendeket építek.
 				</p>
 			</div>
 
-			<div class="md:col-span-4 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm flex flex-col justify-between items-start">
-				<div class="font-mono text-xs text-gray-400 tracking-widest uppercase">[ Status ]</div>
-				<div class="font-serif text-3xl my-4">Available<br/>for Work</div>
-				<a href="mailto:email@cim.hu" class="font-mono text-sm border-b border-black pb-1 hover:text-nothing-red hover:border-nothing-red transition-colors">
-					[ CONTACT_ME ]
-				</a>
-			</div>
+			<div
+				class="md:col-span-4 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm flex flex-col justify-between items-start relative overflow-hidden group"
+			>
+				<div
+					class="font-mono text-xs text-gray-400 tracking-widest uppercase relative z-10"
+				>
+					[ Status ]
+				</div>
 
-			<div class="md:col-span-12 bg-black text-white p-8 shadow-sm relative overflow-hidden group">
-				<div class="absolute top-0 right-0 p-8 opacity-10 font-serif text-9xl leading-none pointer-events-none group-hover:scale-110 transition-transform duration-700">DEV</div>
-				
-				<div class="font-mono text-xs text-gray-400 tracking-widest uppercase mb-8">[ 02_Projects_Hub ]</div>
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-					<a href="#" class="block border border-gray-700 p-6 hover:bg-white/10 transition-colors">
-						<h3 class="font-mono text-lg mb-2 text-white">Angular.App</h3>
-						<p class="font-sans text-sm text-gray-400 mb-4">Komplex kliensoldali SPA architektúra RxJS-sel.</p>
-						<span class="text-xs font-mono text-nothing-red">LAUNCH -></span>
-					</a>
-					<a href="#" class="block border border-gray-700 p-6 hover:bg-white/10 transition-colors">
-						<h3 class="font-mono text-lg mb-2 text-white">React.Shop</h3>
-						<p class="font-sans text-sm text-gray-400 mb-4">Modern e-kereskedelmi felület, gyors állapotkezeléssel.</p>
-						<span class="text-xs font-mono text-nothing-red">LAUNCH -></span>
-					</a>
-					<a href="#" class="block border border-gray-700 p-6 hover:bg-white/10 transition-colors">
-						<h3 class="font-mono text-lg mb-2 text-white">Blazor.CRM</h3>
-						<p class="font-sans text-sm text-gray-400 mb-4">Teljes C# stacken futó belső ügyviteli rendszer.</p>
-						<span class="text-xs font-mono text-nothing-red">LAUNCH -></span>
+				<div
+					class="absolute right-0 top-1/2 -translate-y-1/2 w-[200px] h-[200px] opacity-80 group-hover:opacity-100 transition-opacity"
+				>
+					<SystemCore client:only="react" />
+				</div>
+
+				<div class="relative z-10 mt-8">
+					<div class="font-serif text-3xl mb-4">
+						Available<br />for Work
+					</div>
+					<div class="flex items-center gap-2 mb-2">
+						<div
+							class="w-2 h-2 rounded-full bg-nothing-red animate-pulse"
+						>
+						</div>
+						<span
+							class="font-mono text-xs tracking-widest text-gray-500 uppercase"
+							>Core Active</span
+						>
+					</div>
+					<a
+						href="mailto:email@cim.hu"
+						class="font-mono text-sm border-b border-black pb-1 hover:text-nothing-red hover:border-nothing-red transition-colors inline-block mt-4"
+					>
+						[ CONTACT_ME ]
 					</a>
 				</div>
 			</div>
 
-			<div class="md:col-span-7 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm">
-				<div class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-6">[ 03_Tech_Stack ]</div>
+			<div
+				class="md:col-span-12 bg-black text-white p-8 shadow-sm relative overflow-hidden group"
+			>
+				<div
+					class="absolute top-0 right-0 p-8 opacity-10 font-serif text-9xl leading-none pointer-events-none group-hover:scale-110 transition-transform duration-700"
+				>
+					DEV
+				</div>
+
+				<div
+					class="font-mono text-xs text-gray-400 tracking-widest uppercase mb-8"
+				>
+					[ 02_Projects_Hub ]
+				</div>
+				<div
+					class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10"
+				>
+					<a
+						href="#"
+						class="block border border-gray-700 p-6 hover:bg-white/10 transition-colors"
+					>
+						<h3 class="font-mono text-lg mb-2 text-white">
+							Angular.App
+						</h3>
+						<p class="font-sans text-sm text-gray-400 mb-4">
+							Komplex kliensoldali SPA architektúra RxJS-sel.
+						</p>
+						<span class="text-xs font-mono text-nothing-red"
+							>LAUNCH -></span
+						>
+					</a>
+					<a
+						href="#"
+						class="block border border-gray-700 p-6 hover:bg-white/10 transition-colors"
+					>
+						<h3 class="font-mono text-lg mb-2 text-white">
+							React.Shop
+						</h3>
+						<p class="font-sans text-sm text-gray-400 mb-4">
+							Modern e-kereskedelmi felület, gyors
+							állapotkezeléssel.
+						</p>
+						<span class="text-xs font-mono text-nothing-red"
+							>LAUNCH -></span
+						>
+					</a>
+					<a
+						href="#"
+						class="block border border-gray-700 p-6 hover:bg-white/10 transition-colors"
+					>
+						<h3 class="font-mono text-lg mb-2 text-white">
+							Blazor.CRM
+						</h3>
+						<p class="font-sans text-sm text-gray-400 mb-4">
+							Teljes C# stacken futó belső ügyviteli rendszer.
+						</p>
+						<span class="text-xs font-mono text-nothing-red"
+							>LAUNCH -></span
+						>
+					</a>
+				</div>
+			</div>
+
+			<div
+				class="md:col-span-7 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm"
+			>
+				<div
+					class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-6"
+				>
+					[ 03_Tech_Stack ]
+				</div>
 				<div class="flex flex-wrap gap-2 font-sans text-sm">
-					<span class="border border-gray-300 px-4 py-2 bg-white">Angular</span>
-					<span class="border border-gray-300 px-4 py-2 bg-white">React</span>
-					<span class="border border-gray-300 px-4 py-2 bg-white">Tailwind CSS</span>
-					<span class="border border-gray-300 px-4 py-2 bg-white">C# .NET 8</span>
-					<span class="border border-gray-300 px-4 py-2 bg-white">Blazor</span>
-					<span class="border border-gray-300 px-4 py-2 bg-white">SQL</span>
-					<span class="border border-gray-300 px-4 py-2 bg-white">Docker</span>
-					<span class="border border-gray-300 px-4 py-2 bg-white">Git</span>
+					<span class="border border-gray-300 px-4 py-2 bg-white"
+						>Angular</span
+					>
+					<span class="border border-gray-300 px-4 py-2 bg-white"
+						>React</span
+					>
+					<span class="border border-gray-300 px-4 py-2 bg-white"
+						>Tailwind CSS</span
+					>
+					<span class="border border-gray-300 px-4 py-2 bg-white"
+						>C# .NET 8</span
+					>
+					<span class="border border-gray-300 px-4 py-2 bg-white"
+						>Blazor</span
+					>
+					<span class="border border-gray-300 px-4 py-2 bg-white"
+						>SQL</span
+					>
+					<span class="border border-gray-300 px-4 py-2 bg-white"
+						>Docker</span
+					>
+					<span class="border border-gray-300 px-4 py-2 bg-white"
+						>Git</span
+					>
 				</div>
 			</div>
 
-			<div class="md:col-span-5 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm">
-				<div class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-6">[ 04_Experience ]</div>
-				
+			<div
+				class="md:col-span-5 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm"
+			>
+				<div
+					class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-6"
+				>
+					[ 04_Experience ]
+				</div>
+
 				<div class="border-l border-black pl-4 mb-6 relative">
-					<div class="absolute w-2 h-2 bg-black rounded-full -left-[4.5px] top-1.5"></div>
+					<div
+						class="absolute w-2 h-2 bg-black rounded-full -left-[4.5px] top-1.5"
+					>
+					</div>
 					<h3 class="font-bold text-lg">Full Stack Fejlesztő</h3>
-					<div class="text-xs font-mono text-gray-500 mb-1">Példa Kft. | 2022 - Jelenleg</div>
-					<p class="text-sm text-gray-700 font-sans">Belső ERP rendszer fejlesztése és mikroszervizek tervezése.</p>
+					<div class="text-xs font-mono text-gray-500 mb-1">
+						Példa Kft. | 2022 - Jelenleg
+					</div>
+					<p class="text-sm text-gray-700 font-sans">
+						Belső ERP rendszer fejlesztése és mikroszervizek
+						tervezése.
+					</p>
 				</div>
-				
+
 				<div class="border-l border-gray-300 pl-4 relative">
-					<div class="absolute w-2 h-2 bg-gray-300 rounded-full -left-[4.5px] top-1.5"></div>
-					<h3 class="font-bold text-lg text-gray-600">Junior Fejlesztő</h3>
-					<div class="text-xs font-mono text-gray-400 mb-1">Startup Zrt. | 2020 - 2022</div>
-					<p class="text-sm text-gray-500 font-sans">Webes felületek készítése Blazorral.</p>
+					<div
+						class="absolute w-2 h-2 bg-gray-300 rounded-full -left-[4.5px] top-1.5"
+					>
+					</div>
+					<h3 class="font-bold text-lg text-gray-600">
+						Junior Fejlesztő
+					</h3>
+					<div class="text-xs font-mono text-gray-400 mb-1">
+						Startup Zrt. | 2020 - 2022
+					</div>
+					<p class="text-sm text-gray-500 font-sans">
+						Webes felületek készítése Blazorral.
+					</p>
 				</div>
 			</div>
 
-			<div class="md:col-span-6 border border-gray-300 border-dashed p-8 flex flex-col justify-center items-center text-center bg-white/20">
-				<div class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-2">[ 05_Education ]</div>
+			<div
+				class="md:col-span-6 border border-gray-300 border-dashed p-8 flex flex-col justify-center items-center text-center bg-white/20"
+			>
+				<div
+					class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-2"
+				>
+					[ 05_Education ]
+				</div>
 				<h3 class="font-serif text-2xl mb-1">Mérnökinformatikus BSc</h3>
-				<p class="font-mono text-xs text-gray-500">Neumann János Egyetem (2017-2021)</p>
+				<p class="font-mono text-xs text-gray-500">
+					Neumann János Egyetem (2017-2021)
+				</p>
 			</div>
 
-			<div class="md:col-span-6 border border-gray-300 border-dashed p-8 flex flex-col justify-center items-center text-center bg-white/20">
-				<div class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-2">[ 06_Hobbies ]</div>
+			<div
+				class="md:col-span-6 border border-gray-300 border-dashed p-8 flex flex-col justify-center items-center text-center bg-white/20"
+			>
+				<div
+					class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-2"
+				>
+					[ 06_Hobbies ]
+				</div>
 				<h3 class="font-serif text-2xl mb-1">3D Nyomtatás & Túrázás</h3>
-				<p class="font-mono text-xs text-gray-500">Kikapcsolódás a képernyőn túl</p>
+				<p class="font-mono text-xs text-gray-500">
+					Kikapcsolódás a képernyőn túl
+				</p>
 			</div>
-
 		</main>
-
 	</body>
 </html>
