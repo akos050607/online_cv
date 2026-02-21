@@ -1,7 +1,8 @@
 ---
 import "../styles/global.css";
-import '../styles/global.css';
-import SystemCore from '../components/SystemCore.jsx';
+import "../styles/global.css";
+import SystemCore from "../components/SystemCore.jsx";
+import ProfileHologram from "../components/ProfileHologram.jsx";
 ---
 
 <html lang="hu">
@@ -31,20 +32,33 @@ import SystemCore from '../components/SystemCore.jsx';
 			class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10"
 		>
 			<div
-				class="md:col-span-8 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm flex flex-col justify-center"
+				class="md:col-span-8 bg-white/60 backdrop-blur-md border border-gray-300 shadow-sm grid grid-cols-1 md:grid-cols-2 overflow-hidden"
 			>
-				<div
-					class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-4"
-				>
-					[ 01_Profile ]
+				<div class="p-8 flex flex-col justify-center">
+					<div
+						class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-4"
+					>
+						[ 01_Profile ]
+					</div>
+					<h1 class="font-serif text-5xl mb-4">Kovács János</h1>
+					<p
+						class="font-sans text-lg text-gray-700 leading-relaxed mb-6"
+					>
+						Full Stack fejlesztő. <br />
+						A tiszta kód és a skálázható rendszerek megszállottja.
+					</p>
+					<div
+						class="font-mono text-xs text-gray-400 pt-4 border-t border-gray-200"
+					>
+						ID: DEV_KJ_88 // LOC: Budapest
+					</div>
 				</div>
-				<h1 class="font-serif text-5xl mb-4">Kovács János</h1>
-				<p class="font-sans text-lg text-gray-700 leading-relaxed">
-					Tapasztalt Full Stack fejlesztő vagyok, aki hisz a tiszta
-					kódban és a "megfelelő eszközt a feladathoz" elvben. Erős
-					alapokkal rendelkezem a .NET ökoszisztémában, miközben
-					modern, interaktív frontendeket építek.
-				</p>
+
+				<div
+					class="h-[400px] md:h-auto bg-gray-100 border-t md:border-t-0 md:border-l border-gray-300"
+				>
+					<ProfileHologram client:only="react" />
+				</div>
 			</div>
 
 			<div
