@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import "../styles/global.css";
 import SystemCore from "../components/SystemCore.jsx";
 import ProfileHologram from "../components/ProfileHologram.jsx";
 ---
@@ -12,260 +11,139 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Kovács János - System</title>
 	</head>
-	<body
-		class="min-h-screen relative selection:bg-nothing-red selection:text-white text-black py-12 px-6"
-	>
+	<body class="relative selection:bg-nothing-red selection:text-white text-black bg-[#f4f4f4]">
+		
 		<div class="dot-grid-overlay"></div>
 
-		<header
-			class="max-w-7xl mx-auto mb-8 flex justify-between items-center font-mono text-xs text-gray-500 uppercase tracking-widest"
-		>
-			<div>OS_VERSION: 1.0</div>
-			<div class="flex items-center gap-2">
-				<div class="w-2 h-2 rounded-full bg-nothing-red animate-pulse">
-				</div>
-				<span>System Online</span>
-			</div>
-		</header>
+		<main class="relative z-10 flex flex-col">
 
-		<main
-			class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10"
-		>
-			<div
-				class="md:col-span-8 bg-white/60 backdrop-blur-md border border-gray-300 shadow-sm grid grid-cols-1 md:grid-cols-2 overflow-hidden"
-			>
-				<div class="p-8 flex flex-col justify-center">
-					<div
-						class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-4"
-					>
-						[ 01_Profile ]
-					</div>
-					<h1 class="font-serif text-5xl mb-4">Kovács János</h1>
-					<p
-						class="font-sans text-lg text-gray-700 leading-relaxed mb-6"
-					>
-						Full Stack fejlesztő. <br />
-						A tiszta kód és a skálázható rendszerek megszállottja.
-					</p>
-					<div
-						class="font-mono text-xs text-gray-400 pt-4 border-t border-gray-200"
-					>
-						ID: DEV_KJ_88 // LOC: Budapest
-					</div>
-				</div>
-
-				<div
-					class="h-[400px] md:h-auto bg-gray-100 border-t md:border-t-0 md:border-l border-gray-300"
-				>
-					<ProfileHologram client:only="react" />
-				</div>
-			</div>
-
-			<div
-				class="md:col-span-4 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm flex flex-col justify-between items-start relative overflow-hidden group"
-			>
-				<div
-					class="font-mono text-xs text-gray-400 tracking-widest uppercase relative z-10"
-				>
-					[ Status ]
-				</div>
-
-				<div
-					class="absolute right-0 top-1/2 -translate-y-1/2 w-[200px] h-[200px] opacity-80 group-hover:opacity-100 transition-opacity"
-				>
-					<SystemCore client:only="react" />
-				</div>
-
-				<div class="relative z-10 mt-8">
-					<div class="font-serif text-3xl mb-4">
-						Available<br />for Work
-					</div>
-					<div class="flex items-center gap-2 mb-2">
-						<div
-							class="w-2 h-2 rounded-full bg-nothing-red animate-pulse"
-						>
+			<section class="min-h-[100dvh] w-full flex items-center justify-center p-6 md:p-12">
+				<div class="max-w-[90rem] w-full grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+					
+					<div class="bg-white/60 backdrop-blur-md border border-gray-300 p-8 md:p-10 flex flex-col justify-center shadow-sm">
+						<div class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-6">[ 01_Profile ]</div>
+						<h1 class="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight">Kovács János</h1>
+						<p class="font-sans text-base text-gray-700 leading-relaxed mb-8">
+							Full Stack fejlesztő.<br />
+							A tiszta kód és a skálázható rendszerek megszállottja.
+						</p>
+						<div class="font-mono text-[10px] md:text-xs text-gray-400 pt-4 border-t border-gray-200 mt-auto">
+							ID: DEV_KJ_88 // LOC: Budapest
 						</div>
-						<span
-							class="font-mono text-xs tracking-widest text-gray-500 uppercase"
-							>Core Active</span
-						>
 					</div>
-					<a
-						href="mailto:email@cim.hu"
-						class="font-mono text-sm border-b border-black pb-1 hover:text-nothing-red hover:border-nothing-red transition-colors inline-block mt-4"
-					>
-						[ CONTACT_ME ]
-					</a>
-				</div>
-			</div>
 
-			<div
-				class="md:col-span-12 bg-black text-white p-8 shadow-sm relative overflow-hidden group"
-			>
-				<div
-					class="absolute top-0 right-0 p-8 opacity-10 font-serif text-9xl leading-none pointer-events-none group-hover:scale-110 transition-transform duration-700"
-				>
-					DEV
-				</div>
-
-				<div
-					class="font-mono text-xs text-gray-400 tracking-widest uppercase mb-8"
-				>
-					[ 02_Projects_Hub ]
-				</div>
-				<div
-					class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10"
-				>
-					<a
-						href="#"
-						class="block border border-gray-700 p-6 hover:bg-white/10 transition-colors"
-					>
-						<h3 class="font-mono text-lg mb-2 text-white">
-							Angular.App
-						</h3>
-						<p class="font-sans text-sm text-gray-400 mb-4">
-							Komplex kliensoldali SPA architektúra RxJS-sel.
-						</p>
-						<span class="text-xs font-mono text-nothing-red"
-							>LAUNCH -></span
-						>
-					</a>
-					<a
-						href="#"
-						class="block border border-gray-700 p-6 hover:bg-white/10 transition-colors"
-					>
-						<h3 class="font-mono text-lg mb-2 text-white">
-							React.Shop
-						</h3>
-						<p class="font-sans text-sm text-gray-400 mb-4">
-							Modern e-kereskedelmi felület, gyors
-							állapotkezeléssel.
-						</p>
-						<span class="text-xs font-mono text-nothing-red"
-							>LAUNCH -></span
-						>
-					</a>
-					<a
-						href="#"
-						class="block border border-gray-700 p-6 hover:bg-white/10 transition-colors"
-					>
-						<h3 class="font-mono text-lg mb-2 text-white">
-							Blazor.CRM
-						</h3>
-						<p class="font-sans text-sm text-gray-400 mb-4">
-							Teljes C# stacken futó belső ügyviteli rendszer.
-						</p>
-						<span class="text-xs font-mono text-nothing-red"
-							>LAUNCH -></span
-						>
-					</a>
-				</div>
-			</div>
-
-			<div
-				class="md:col-span-7 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm"
-			>
-				<div
-					class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-6"
-				>
-					[ 03_Tech_Stack ]
-				</div>
-				<div class="flex flex-wrap gap-2 font-sans text-sm">
-					<span class="border border-gray-300 px-4 py-2 bg-white"
-						>Angular</span
-					>
-					<span class="border border-gray-300 px-4 py-2 bg-white"
-						>React</span
-					>
-					<span class="border border-gray-300 px-4 py-2 bg-white"
-						>Tailwind CSS</span
-					>
-					<span class="border border-gray-300 px-4 py-2 bg-white"
-						>C# .NET 8</span
-					>
-					<span class="border border-gray-300 px-4 py-2 bg-white"
-						>Blazor</span
-					>
-					<span class="border border-gray-300 px-4 py-2 bg-white"
-						>SQL</span
-					>
-					<span class="border border-gray-300 px-4 py-2 bg-white"
-						>Docker</span
-					>
-					<span class="border border-gray-300 px-4 py-2 bg-white"
-						>Git</span
-					>
-				</div>
-			</div>
-
-			<div
-				class="md:col-span-5 bg-white/60 backdrop-blur-md border border-gray-300 p-8 shadow-sm"
-			>
-				<div
-					class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-6"
-				>
-					[ 04_Experience ]
-				</div>
-
-				<div class="border-l border-black pl-4 mb-6 relative">
-					<div
-						class="absolute w-2 h-2 bg-black rounded-full -left-[4.5px] top-1.5"
-					>
+					<div class="bg-gray-100 border border-gray-300 flex items-center justify-center overflow-hidden shadow-sm relative">
+						<ProfileHologram client:only="react" />
 					</div>
-					<h3 class="font-bold text-lg">Full Stack Fejlesztő</h3>
-					<div class="text-xs font-mono text-gray-500 mb-1">
-						Példa Kft. | 2022 - Jelenleg
-					</div>
-					<p class="text-sm text-gray-700 font-sans">
-						Belső ERP rendszer fejlesztése és mikroszervizek
-						tervezése.
-					</p>
-				</div>
 
-				<div class="border-l border-gray-300 pl-4 relative">
-					<div
-						class="absolute w-2 h-2 bg-gray-300 rounded-full -left-[4.5px] top-1.5"
-					>
-					</div>
-					<h3 class="font-bold text-lg text-gray-600">
-						Junior Fejlesztő
-					</h3>
-					<div class="text-xs font-mono text-gray-400 mb-1">
-						Startup Zrt. | 2020 - 2022
-					</div>
-					<p class="text-sm text-gray-500 font-sans">
-						Webes felületek készítése Blazorral.
-					</p>
-				</div>
-			</div>
+					<div class="bg-white/60 backdrop-blur-md border border-gray-300 p-8 md:p-10 flex flex-col justify-between shadow-sm relative overflow-hidden group">
+						<div class="font-mono text-xs text-gray-400 tracking-widest uppercase relative z-10 mb-8">[ Status ]</div>
+						
+						<div class="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[250px] md:w-[350px] h-[250px] md:h-[350px] opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none">
+							<SystemCore client:only="react" />
+						</div>
 
-			<div
-				class="md:col-span-6 border border-gray-300 border-dashed p-8 flex flex-col justify-center items-center text-center bg-white/20"
-			>
-				<div
-					class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-2"
-				>
-					[ 05_Education ]
-				</div>
-				<h3 class="font-serif text-2xl mb-1">Mérnökinformatikus BSc</h3>
-				<p class="font-mono text-xs text-gray-500">
-					Neumann János Egyetem (2017-2021)
-				</p>
-			</div>
+						<div class="relative z-10 mt-auto">
+							<div class="font-serif text-3xl md:text-4xl mb-4 leading-tight">Available<br />for Work</div>
+							<div class="flex items-center gap-2 mb-6">
+								<div class="w-2 h-2 rounded-full bg-nothing-red animate-pulse"></div>
+								<span class="font-mono text-xs tracking-widest text-gray-500 uppercase">Core Active</span>
+							</div>
+							<a href="mailto:email@cim.hu" class="font-mono text-xs md:text-sm border-b border-black pb-1 hover:text-nothing-red hover:border-nothing-red transition-colors inline-block">
+								[ CONTACT_ME ]
+							</a>
+						</div>
+					</div>
 
-			<div
-				class="md:col-span-6 border border-gray-300 border-dashed p-8 flex flex-col justify-center items-center text-center bg-white/20"
-			>
-				<div
-					class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-2"
-				>
-					[ 06_Hobbies ]
 				</div>
-				<h3 class="font-serif text-2xl mb-1">3D Nyomtatás & Túrázás</h3>
-				<p class="font-mono text-xs text-gray-500">
-					Kikapcsolódás a képernyőn túl
-				</p>
-			</div>
+			</section>
+
+			<section class="min-h-[100dvh] w-full bg-black text-white flex items-center justify-center p-6 md:p-12 relative overflow-hidden">
+				<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 font-serif text-[15vw] leading-none pointer-events-none whitespace-nowrap">
+					PROJECTS
+				</div>
+				
+				<div class="max-w-7xl w-full relative z-10 flex flex-col justify-center py-12">
+					<div class="font-mono text-xs text-gray-400 tracking-widest uppercase mb-12 text-center">[ 02_Projects_Hub ]</div>
+					
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+						<a href="#" class="block border border-gray-700 p-8 hover:bg-white/10 transition-colors group">
+							<h3 class="font-mono text-xl md:text-2xl mb-4 text-white group-hover:text-nothing-red transition-colors">Angular.App</h3>
+							<p class="font-sans text-sm text-gray-400 mb-8">Komplex kliensoldali SPA architektúra RxJS-sel.</p>
+							<span class="text-xs font-mono text-gray-500 group-hover:text-white transition-colors">LAUNCH -></span>
+						</a>
+						<a href="#" class="block border border-gray-700 p-8 hover:bg-white/10 transition-colors group">
+							<h3 class="font-mono text-xl md:text-2xl mb-4 text-white group-hover:text-nothing-red transition-colors">React.Shop</h3>
+							<p class="font-sans text-sm text-gray-400 mb-8">Modern e-kereskedelmi felület, gyors állapotkezeléssel.</p>
+							<span class="text-xs font-mono text-gray-500 group-hover:text-white transition-colors">LAUNCH -></span>
+						</a>
+						<a href="#" class="block border border-gray-700 p-8 hover:bg-white/10 transition-colors group">
+							<h3 class="font-mono text-xl md:text-2xl mb-4 text-white group-hover:text-nothing-red transition-colors">Blazor.CRM</h3>
+							<p class="font-sans text-sm text-gray-400 mb-8">Teljes C# stacken futó belső ügyviteli rendszer.</p>
+							<span class="text-xs font-mono text-gray-500 group-hover:text-white transition-colors">LAUNCH -></span>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="min-h-[100dvh] w-full flex items-center justify-center p-6 md:p-12">
+				<div class="max-w-5xl w-full bg-white/60 backdrop-blur-md border border-gray-300 p-10 md:p-16 shadow-sm text-center">
+					<div class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-10">[ 03_Tech_Stack ]</div>
+					
+					<div class="flex flex-wrap justify-center gap-4 md:gap-6 font-sans text-sm md:text-base">
+						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">Angular (RxJS, NgRx)</span>
+						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">React (Next.js)</span>
+						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">Tailwind CSS</span>
+						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">C# .NET 8</span>
+						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">ASP.NET Core / Blazor</span>
+						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">SQL / PostgreSQL</span>
+						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">Docker & CI/CD</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="min-h-[100dvh] w-full flex items-center justify-center p-6 md:p-12">
+				<div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+					
+					<div class="bg-white/60 backdrop-blur-md border border-gray-300 p-8 md:p-12 shadow-sm flex flex-col justify-center">
+						<div class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-10">[ 04_Experience ]</div>
+						
+						<div class="border-l border-black pl-5 mb-8 relative">
+							<div class="absolute w-2 h-2 bg-black rounded-full -left-[4.5px] top-1.5"></div>
+							<h3 class="font-bold text-xl md:text-2xl mb-1">Full Stack Fejlesztő</h3>
+							<div class="text-xs font-mono text-gray-500 mb-3">Példa Kft. | 2022 - Jelenleg</div>
+							<p class="text-sm md:text-base text-gray-700 font-sans leading-relaxed">
+								Belső ERP rendszer fejlesztése és mikroszervizek tervezése. Modern interaktív felületek építése.
+							</p>
+						</div>
+
+						<div class="border-l border-gray-300 pl-5 relative">
+							<div class="absolute w-2 h-2 bg-gray-300 rounded-full -left-[4.5px] top-1.5"></div>
+							<h3 class="font-bold text-xl md:text-2xl text-gray-600 mb-1">Junior Fejlesztő</h3>
+							<div class="text-xs font-mono text-gray-400 mb-3">Startup Zrt. | 2020 - 2022</div>
+							<p class="text-sm md:text-base text-gray-500 font-sans leading-relaxed">
+								Webes felületek készítése Blazorral, adatbázisok tervezése.
+							</p>
+						</div>
+					</div>
+
+					<div class="flex flex-col gap-8 md:gap-12">
+						<div class="bg-white/20 backdrop-blur-sm border border-gray-300 border-dashed p-8 md:p-12 flex flex-col justify-center items-start shadow-sm flex-1">
+							<div class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-4">[ 05_Education ]</div>
+							<h3 class="font-serif text-2xl md:text-3xl mb-2">Mérnökinformatikus BSc</h3>
+							<p class="font-mono text-xs text-gray-500">Neumann János Egyetem (2017-2021)</p>
+						</div>
+						
+						<div class="bg-white/20 backdrop-blur-sm border border-gray-300 border-dashed p-8 md:p-12 flex flex-col justify-center items-start shadow-sm flex-1">
+							<div class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-4">[ 06_Hobbies ]</div>
+							<h3 class="font-serif text-2xl md:text-3xl mb-2">3D Nyomtatás & Természet</h3>
+							<p class="font-mono text-xs text-gray-500">A hardver és a világ felfedezése.</p>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
 		</main>
 	</body>
 </html>
