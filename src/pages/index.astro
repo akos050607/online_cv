@@ -5,145 +5,409 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
 ---
 
 <html lang="hu">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kovács János - System</title>
-	</head>
-	<body class="relative selection:bg-nothing-red selection:text-white text-black bg-[#f4f4f4]">
-		
-		<div class="dot-grid-overlay"></div>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Szénássy Ákos - System</title>
+  </head>
+  <body class="theme-body">
+    <div class="dot-grid-overlay"></div>
 
-		<main class="relative z-10 flex flex-col">
+    <main class="relative z-10 flex flex-col">
+      <section class="section-container">
+        <div
+          class="max-w-[90rem] w-full grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8"
+        >
+          <div class="glass-panel justify-center">
+            <div class="mono-label-red">[ 01_Profile ]</div>
+            <h1 class="heading-primary">Szénássy Ákos</h1>
+            <p class="font-sans text-base text-gray-700 leading-relaxed mb-8">
+              Mérnökinformatikus hallgató a BME-n.<br />
+              Kiváló problémamegoldó képességgel, csapatjátékos szemlélettel. Célom
+              egy kihívásokkal teli gyakornoki pozíció megszerzése.
+            </p>
+            <div
+              class="font-mono text-[10px] md:text-xs text-gray-400 pt-4 border-t border-gray-200 mt-auto flex justify-between"
+            >
+              <span>LOC: Budapest</span>
+              <a
+                href="https://github.com/akos050607"
+                target="_blank"
+                class="hover:text-black transition-colors">GITHUB</a
+              >
+            </div>
+          </div>
 
-			<section class="min-h-[100dvh] w-full flex items-center justify-center p-6 md:p-12">
-				<div class="max-w-[90rem] w-full grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-					
-					<div class="bg-white/60 backdrop-blur-md border border-gray-300 p-8 md:p-10 flex flex-col justify-center shadow-sm">
-						<div class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-6">[ 01_Profile ]</div>
-						<h1 class="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight">Kovács János</h1>
-						<p class="font-sans text-base text-gray-700 leading-relaxed mb-8">
-							Full Stack fejlesztő.<br />
-							A tiszta kód és a skálázható rendszerek megszállottja.
-						</p>
-						<div class="font-mono text-[10px] md:text-xs text-gray-400 pt-4 border-t border-gray-200 mt-auto">
-							ID: DEV_KJ_88 // LOC: Budapest
-						</div>
-					</div>
+          <div
+            class="bg-gray-100 border border-gray-300 flex items-center justify-center overflow-hidden shadow-sm relative"
+          >
+            <ProfileHologram client:only="react" />
+          </div>
 
-					<div class="bg-gray-100 border border-gray-300 flex items-center justify-center overflow-hidden shadow-sm relative">
-						<ProfileHologram client:only="react" />
-					</div>
+          <div class="glass-panel justify-between group">
+            <div class="flex items-center justify-between relative z-10 mb-8">
+              <div class="mono-label !mb-0">[ Status ]</div>
+            </div>
 
-					<div class="bg-white/60 backdrop-blur-md border border-gray-300 p-8 md:p-10 flex flex-col justify-between shadow-sm relative overflow-hidden group">
-						<div class="font-mono text-xs text-gray-400 tracking-widest uppercase relative z-10 mb-8">[ Status ]</div>
-						
-						<div class="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[250px] md:w-[350px] h-[250px] md:h-[350px] opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none">
-							<SystemCore client:only="react" />
-						</div>
+            <div
+              class="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[250px] md:w-[350px] h-[250px] md:h-[350px] opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none"
+            >
+              <SystemCore client:only="react" />
+            </div>
 
-						<div class="relative z-10 mt-auto">
-							<div class="font-serif text-3xl md:text-4xl mb-4 leading-tight">Available<br />for Work</div>
-							<div class="flex items-center gap-2 mb-6">
-								<div class="w-2 h-2 rounded-full bg-nothing-red animate-pulse"></div>
-								<span class="font-mono text-xs tracking-widest text-gray-500 uppercase">Core Active</span>
-							</div>
-							<a href="mailto:email@cim.hu" class="font-mono text-xs md:text-sm border-b border-black pb-1 hover:text-nothing-red hover:border-nothing-red transition-colors inline-block">
-								[ CONTACT_ME ]
-							</a>
-						</div>
-					</div>
+            <div class="relative z-10 mt-auto">
+              <div class="font-serif text-3xl md:text-4xl mb-4 leading-tight">
+                Available<br />for Internship
+              </div>
+              <div class="flex items-center gap-2 mb-6">
+                <div class="w-2 h-2 rounded-full bg-nothing-red animate-pulse">
+                </div>
+                <span
+                  class="font-mono text-xs tracking-widest text-gray-500 uppercase"
+                  >Core Active</span
+                >
+              </div>
+              <a
+                href="mailto:szenassy.akos5@gmail.com"
+                class="font-mono text-xs md:text-sm border-b border-black pb-1 hover:text-nothing-red hover:border-nothing-red transition-colors inline-block"
+              >
+                [ CONTACT_ME ]
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-				</div>
-			</section>
+      <div id="slide-fade-wrapper" class="relative h-[400vh] w-full bg-black">
+        <div class="sticky top-0 h-screen w-full overflow-hidden bg-black">
+          <section
+            id="section-projects"
+            class="absolute inset-0 w-full h-full bg-black text-white flex items-center justify-center p-6 md:p-12 will-change-transform"
+          >
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 font-serif text-[15vw] leading-none pointer-events-none whitespace-nowrap"
+            >
+              PROJECTS
+            </div>
 
-			<section class="min-h-[100dvh] w-full bg-black text-white flex items-center justify-center p-6 md:p-12 relative overflow-hidden">
-				<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 font-serif text-[15vw] leading-none pointer-events-none whitespace-nowrap">
-					PROJECTS
-				</div>
-				
-				<div class="max-w-7xl w-full relative z-10 flex flex-col justify-center py-12">
-					<div class="font-mono text-xs text-gray-400 tracking-widest uppercase mb-12 text-center">[ 02_Projects_Hub ]</div>
-					
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-						<a href="#" class="block border border-gray-700 p-8 hover:bg-white/10 transition-colors group">
-							<h3 class="font-mono text-xl md:text-2xl mb-4 text-white group-hover:text-nothing-red transition-colors">Angular.App</h3>
-							<p class="font-sans text-sm text-gray-400 mb-8">Komplex kliensoldali SPA architektúra RxJS-sel.</p>
-							<span class="text-xs font-mono text-gray-500 group-hover:text-white transition-colors">LAUNCH -></span>
-						</a>
-						<a href="#" class="block border border-gray-700 p-8 hover:bg-white/10 transition-colors group">
-							<h3 class="font-mono text-xl md:text-2xl mb-4 text-white group-hover:text-nothing-red transition-colors">React.Shop</h3>
-							<p class="font-sans text-sm text-gray-400 mb-8">Modern e-kereskedelmi felület, gyors állapotkezeléssel.</p>
-							<span class="text-xs font-mono text-gray-500 group-hover:text-white transition-colors">LAUNCH -></span>
-						</a>
-						<a href="#" class="block border border-gray-700 p-8 hover:bg-white/10 transition-colors group">
-							<h3 class="font-mono text-xl md:text-2xl mb-4 text-white group-hover:text-nothing-red transition-colors">Blazor.CRM</h3>
-							<p class="font-sans text-sm text-gray-400 mb-8">Teljes C# stacken futó belső ügyviteli rendszer.</p>
-							<span class="text-xs font-mono text-gray-500 group-hover:text-white transition-colors">LAUNCH -></span>
-						</a>
-					</div>
-				</div>
-			</section>
+            <div
+              class="max-w-[90rem] w-full relative z-10 flex flex-col justify-center h-full py-20"
+            >
+              <div class="mono-label text-center !text-gray-400">
+                [ 02_Projects_Hub ]
+              </div>
 
-			<section class="min-h-[100dvh] w-full flex items-center justify-center p-6 md:p-12">
-				<div class="max-w-5xl w-full bg-white/60 backdrop-blur-md border border-gray-300 p-10 md:p-16 shadow-sm text-center">
-					<div class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-10">[ 03_Tech_Stack ]</div>
-					
-					<div class="flex flex-wrap justify-center gap-4 md:gap-6 font-sans text-sm md:text-base">
-						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">Angular (RxJS, NgRx)</span>
-						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">React (Next.js)</span>
-						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">Tailwind CSS</span>
-						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">C# .NET 8</span>
-						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">ASP.NET Core / Blazor</span>
-						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">SQL / PostgreSQL</span>
-						<span class="border border-gray-300 px-5 py-3 bg-white hover:border-nothing-red transition-colors cursor-default">Docker & CI/CD</span>
-					</div>
-				</div>
-			</section>
+              <div class="project-grid">
+                <a
+                  href="https://github.com/akos050607/K3d-chaos-cluster"
+                  target="_blank"
+                  class="project-card project-card-large group"
+                >
+                  <div>
+                    <h3 class="project-title md:text-3xl">K3d-chaos-cluster</h3>
+                    <p class="font-sans text-sm md:text-base text-gray-400">
+                      A practical lab demonstrating a zero-trust hybrid
+                      Kubernetes cluster (K3s + Tailscale) with chaos
+                      engineering, self-healing, and HPA auto-scaling across
+                      cloud and edge nodes.
+                    </p>
+                  </div>
+                  <span class="project-link mt-8">GITHUB -></span>
+                </a>
 
-			<section class="min-h-[100dvh] w-full flex items-center justify-center p-6 md:p-12">
-				<div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-					
-					<div class="bg-white/60 backdrop-blur-md border border-gray-300 p-8 md:p-12 shadow-sm flex flex-col justify-center">
-						<div class="font-mono text-xs text-nothing-red tracking-widest uppercase mb-10">[ 04_Experience ]</div>
-						
-						<div class="border-l border-black pl-5 mb-8 relative">
-							<div class="absolute w-2 h-2 bg-black rounded-full -left-[4.5px] top-1.5"></div>
-							<h3 class="font-bold text-xl md:text-2xl mb-1">Full Stack Fejlesztő</h3>
-							<div class="text-xs font-mono text-gray-500 mb-3">Példa Kft. | 2022 - Jelenleg</div>
-							<p class="text-sm md:text-base text-gray-700 font-sans leading-relaxed">
-								Belső ERP rendszer fejlesztése és mikroszervizek tervezése. Modern interaktív felületek építése.
-							</p>
-						</div>
+                <a
+                  href="https://github.com/akos050607/SmartChainControl"
+                  target="_blank"
+                  class="project-card project-card-wide group"
+                >
+                  <div>
+                    <h3 class="project-title text-xl">SmartChainControl</h3>
+                    <p class="font-sans text-sm text-gray-400">
+                      Real-time Digital Twin Warehouse Simulator built with .NET
+                      9, Blazor WebAssembly, and SignalR. Features autonomous
+                      fleet pathfinding, live telemetry, and zero-latency
+                      WebSocket communication.
+                    </p>
+                  </div>
+                  <span class="project-link">GITHUB -></span>
+                </a>
 
-						<div class="border-l border-gray-300 pl-5 relative">
-							<div class="absolute w-2 h-2 bg-gray-300 rounded-full -left-[4.5px] top-1.5"></div>
-							<h3 class="font-bold text-xl md:text-2xl text-gray-600 mb-1">Junior Fejlesztő</h3>
-							<div class="text-xs font-mono text-gray-400 mb-3">Startup Zrt. | 2020 - 2022</div>
-							<p class="text-sm md:text-base text-gray-500 font-sans leading-relaxed">
-								Webes felületek készítése Blazorral, adatbázisok tervezése.
-							</p>
-						</div>
-					</div>
+                <a
+                  href="https://github.com/akos050607/SpendSmart"
+                  target="_blank"
+                  class="project-card project-card-normal group"
+                >
+                  <div>
+                    <h3 class="project-title">SpendSmart</h3>
+                    <p class="font-sans text-sm text-gray-400 line-clamp-4">
+                      Automated expense tracking pipeline that extracts
+                      structured data from receipt images using OCR/LLMs and
+                      stores it in PostgreSQL for real-time Streamlit
+                      visualization.
+                    </p>
+                  </div>
+                  <span class="project-link">GITHUB -></span>
+                </a>
 
-					<div class="flex flex-col gap-8 md:gap-12">
-						<div class="bg-white/20 backdrop-blur-sm border border-gray-300 border-dashed p-8 md:p-12 flex flex-col justify-center items-start shadow-sm flex-1">
-							<div class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-4">[ 05_Education ]</div>
-							<h3 class="font-serif text-2xl md:text-3xl mb-2">Mérnökinformatikus BSc</h3>
-							<p class="font-mono text-xs text-gray-500">Neumann János Egyetem (2017-2021)</p>
-						</div>
-						
-						<div class="bg-white/20 backdrop-blur-sm border border-gray-300 border-dashed p-8 md:p-12 flex flex-col justify-center items-start shadow-sm flex-1">
-							<div class="font-mono text-xs text-gray-500 tracking-widest uppercase mb-4">[ 06_Hobbies ]</div>
-							<h3 class="font-serif text-2xl md:text-3xl mb-2">3D Nyomtatás & Természet</h3>
-							<p class="font-mono text-xs text-gray-500">A hardver és a világ felfedezése.</p>
-						</div>
-					</div>
+                <a
+                  href="https://github.com/akos050607/PremiereFlow"
+                  target="_blank"
+                  class="project-card project-card-normal group"
+                >
+                  <div>
+                    <h3 class="project-title">PremiereFlow</h3>
+                    <p class="font-sans text-sm text-gray-400 line-clamp-4">
+                      Real-time cinema reservation system built with Spring Boot
+                      and React, utilizing WebSockets for live seat updates and
+                      optimistic locking to prevent double-booking.
+                    </p>
+                  </div>
+                  <span class="project-link">GITHUB -></span>
+                </a>
 
-				</div>
-			</section>
+                <a
+                  href="https://github.com/akos050607/LeaveFlow"
+                  target="_blank"
+                  class="project-card project-card-wide group"
+                >
+                  <div>
+                    <h3 class="project-title text-xl">LeaveFlow</h3>
+                    <p class="font-sans text-sm text-gray-400">
+                      LeaveFlow is a modern, Full-Stack corporate web
+                      application. The project includes a .NET-based REST API
+                      and its corresponding Angular frontend client.
+                    </p>
+                  </div>
+                  <span class="project-link">GITHUB -></span>
+                </a>
 
-		</main>
-	</body>
+                <a
+                  href="https://github.com/akos050607/BillingsAtOnePlace"
+                  target="_blank"
+                  class="project-card project-card-wide group"
+                >
+                  <div>
+                    <h3 class="project-title text-xl">BillingsAtOnePlace</h3>
+                    <p class="font-sans text-sm text-gray-400">
+                      No more manual Excel spreadsheets: whenever you receive a
+                      bank notification on your phone (Revolut, OTP, etc.), the
+                      system captures it, sends it to your PC/Server, where AI
+                      analyzes, categorizes, and saves it.
+                    </p>
+                  </div>
+                  <span class="project-link">GITHUB -></span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="section-tech"
+            class="absolute inset-0 w-full h-full bg-white flex items-center justify-center p-6 md:p-12 will-change-transform translate-x-full shadow-[-20px_0_50px_rgba(0,0,0,0.5)]"
+          >
+            <div
+              class="max-w-5xl w-full bg-gray-50 border border-gray-200 p-10 md:p-16 shadow-sm text-center"
+            >
+              <div class="mono-label-red !mb-10">[ 03_Tech_Stack ]</div>
+              <div
+                class="flex flex-wrap justify-center gap-4 md:gap-6 font-sans text-sm md:text-base"
+              >
+                <span class="tech-badge">C# / .NET 9/10</span>
+                <span class="tech-badge">Java / Spring Boot</span>
+                <span class="tech-badge"
+                  >Angular / React / Blazor -> minimal</span
+                >
+                <span class="tech-badge">SQL</span>
+                <span class="tech-badge">Kubernetes / Docker</span>
+                <span class="tech-badge">WebSockets / SignalR</span>
+                <span class="tech-badge">Cloud / CI/CD</span>
+                <span class="tech-badge">Git / GitHub</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section class="section-container bg-[#f4f4f4]">
+        <div
+          class="absolute inset-0 z-0 opacity-[0.08]"
+          style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;"
+        >
+        </div>
+
+        <div class="max-w-5xl w-full relative z-10 py-12">
+          <div class="mono-label-red text-center !mb-16 md:!mb-24">
+            [ 04_Journey ]
+          </div>
+
+          <div
+            class="relative border-l border-gray-300 md:border-none pl-6 md:pl-0 ml-3 md:ml-0 space-y-12 md:space-y-16"
+          >
+            <div
+              class="hidden md:block absolute left-[30%] top-0 bottom-[-3rem] w-[1px] bg-gray-300 -translate-x-1/2"
+            >
+            </div>
+
+            <div class="journey-item group">
+              <div
+                class="journey-dot bg-nothing-red shadow-[0_0_8px_rgba(204,0,0,0.6)]"
+              >
+              </div>
+              <div class="md:col-span-3 text-left md:text-right mt-1 md:mt-0">
+                <div class="font-mono text-sm text-nothing-red mb-1">
+                  Jelenleg
+                </div>
+                <div class="font-serif text-2xl">Bosch</div>
+              </div>
+              <div class="journey-panel group-hover:border-nothing-red">
+                <h3 class="font-bold text-xl mb-3">
+                  Szoftverfejlesztő Gyakornok
+                </h3>
+                <p
+                  class="text-gray-700 font-sans leading-relaxed text-sm md:text-base"
+                >
+                  Iparági környezetben dolgozom szoftverfejlesztőként. A
+                  mindennapi munkám során <strong>Go</strong>, <strong
+                    >TypeScript</strong
+                  > és <strong>Svelte</strong> technológiákat használok éles, vállalati
+                  projekteken.
+                </p>
+              </div>
+            </div>
+
+            <div class="journey-item group">
+              <div
+                class="journey-dot bg-nothing-red shadow-[0_0_8px_rgba(204,0,0,0.6)]"
+              >
+              </div>
+              <div class="md:col-span-3 text-left md:text-right mt-1 md:mt-0">
+                <div class="font-mono text-sm text-nothing-red mb-1">
+                  2024 Sep - Jelenleg
+                </div>
+                <div class="font-serif text-2xl">BME</div>
+              </div>
+              <div class="journey-panel group-hover:border-nothing-red">
+                <h3 class="font-bold text-xl mb-3">
+                  Mérnökinformatikus BSc Hallgató
+                </h3>
+                <p
+                  class="text-gray-700 font-sans leading-relaxed text-sm md:text-base"
+                >
+                  A gyakornoki munkám mellett <strong>aktív hallgatóként</strong
+                  > folytatom a tanulmányaimat, ahol elmélyítem az elméleti alapokat,
+                  a szoftverfejlesztési módszertanokat és az architektúra-tervezési
+                  ismereteimet.
+                </p>
+              </div>
+            </div>
+
+            <div class="journey-item group">
+              <div class="journey-dot bg-gray-400 group-hover:bg-black"></div>
+              <div class="md:col-span-3 text-left md:text-right mt-1 md:mt-0">
+                <div class="font-mono text-sm text-gray-500 mb-1">
+                  Folyamatos
+                </div>
+                <div class="font-serif text-2xl text-gray-600">Projektek</div>
+              </div>
+              <div class="journey-panel group-hover:border-black">
+                <h3 class="font-bold text-xl text-gray-700 mb-3">
+                  Saját fejlesztések
+                </h3>
+                <p
+                  class="text-gray-500 font-sans leading-relaxed text-sm md:text-base"
+                >
+                  Számos komplex saját projektet fejlesztek (Kubernetes, .NET,
+                  Spring Boot), hogy folyamatosan szélesítsem a látókörömet és a
+                  legmodernebb technológiákat alkalmazzam.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-container bg-white">
+        <div
+          class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 relative z-10 py-12"
+        >
+          <div class="border-t-2 border-black pt-8">
+            <div class="mono-label-red !mb-8">[ 05_Language ]</div>
+            <h3 class="heading-primary !mb-6">
+              Angol <br /><span class="text-gray-400">B2 Szint</span>
+            </h3>
+            <div class="font-mono text-sm text-black mb-2">
+              Magabiztos kommunikáció
+            </div>
+            <div class="font-mono text-xs text-gray-500">
+              Szakmai és hétköznapi környezetben egyaránt.
+            </div>
+          </div>
+
+          <div class="border-t-2 border-black pt-8">
+            <div class="mono-label !mb-8">[ 06_Hobbies ]</div>
+            <h3 class="heading-primary !mb-6">
+              Edzőterem <br />& <span class="text-gray-400">Biciklizés</span>
+            </h3>
+            <div class="font-mono text-sm text-black mb-2">
+              Kikapcsolódás a képernyőn túl
+            </div>
+            <div class="font-mono text-xs text-gray-500">
+              Aktív életmód a fókusz és az egészség megőrzéséért.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const wrapper = document.getElementById("slide-fade-wrapper");
+      const secProjects = document.getElementById("section-projects");
+      const secTech = document.getElementById("section-tech");
+
+      let currentProgress = 0;
+      let targetProgress = 0;
+      const ease = 0.08;
+      const buffer = 0.1;
+
+      const calculateTarget = () => {
+        if (!wrapper) return;
+        const rect = wrapper.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        if (rect.top <= 0 && rect.bottom >= viewportHeight) {
+          const scrollDistance = wrapper.offsetHeight - viewportHeight;
+          const rawProgress = Math.abs(rect.top) / scrollDistance;
+          let adjustedProgress = (rawProgress - buffer) / (1 - 2 * buffer);
+          targetProgress = Math.max(0, Math.min(1, adjustedProgress));
+        } else if (rect.top > 0) {
+          targetProgress = 0;
+          currentProgress = 0;
+        } else if (rect.bottom < viewportHeight) {
+          targetProgress = 1;
+          currentProgress = 1;
+        }
+      };
+      const renderSmoothAnim = () => {
+        if (Math.abs(targetProgress - currentProgress) > 0.001) {
+          currentProgress += (targetProgress - currentProgress) * ease;
+        } else {
+          currentProgress = targetProgress;
+        }
+
+        if (secProjects && secTech) {
+          secProjects.style.opacity = (1 - currentProgress).toString();
+          secProjects.style.transform = `translate3d(-${currentProgress * 20}%, 0, 0) scale(${1 - currentProgress * 0.05})`;
+          const slideInPosition = (1 - currentProgress) * 100;
+          secTech.style.transform = `translate3d(${slideInPosition}%, 0, 0)`;
+        }
+        requestAnimationFrame(renderSmoothAnim);
+      };
+      window.addEventListener("scroll", calculateTarget, { passive: true });
+      window.addEventListener("resize", calculateTarget);
+
+      calculateTarget();
+      renderSmoothAnim();
+    </script>
+  </body>
 </html>
