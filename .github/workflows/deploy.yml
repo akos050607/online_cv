@@ -1,0 +1,39 @@
+name: 🚀 Deploy Astro Portfolio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    name: 🎉 Build & Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Kód lekérése (Checkout)
+        uses: actions/checkout@v4
+
+      - name: 📦 Node.js beállítása
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 🛠️ Függőségek telepítése
+        run: npm install
+
+      - name: 🏗️ Astro weboldal buildelése
+        run: npm run build
+
+      - name: 🚀 Feltöltés a Hetzner szerverre (Rsync)
+        uses: easingthemes/ssh-deploy@v5.0.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          
+          SOURCE: "dist/"
+          
+          TARGET: "/opt/websites/online_cv/dist/"
+          
+          ARGS: "-rltgoDzvO --delete"
