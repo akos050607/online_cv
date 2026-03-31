@@ -22,7 +22,15 @@
   background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='80' cy='80' r='1' fill='%23ffffff'/%3E%3C/svg%3E");
   background-position: center center;
 }
-
+.hardware-drop {
+  animation: dropLine 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes dropLine {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(300%); opacity: 0; }
+}
 @layer components {
   /* Globális elrendezések */
   .theme-body {
