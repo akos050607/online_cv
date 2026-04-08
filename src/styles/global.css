@@ -25,6 +25,40 @@
 .hardware-drop {
   animation: dropLine 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; 
+  font-weight: bold; 
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ff3333; 
+  border-radius: 50%;
+  display: inline-block;
+  
+  animation: pulse-blink 1.5s infinite;
+}
+
+@keyframes pulse-blink {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.95);
+    box-shadow: 0 0 0 6px rgba(255, 51, 51, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 51, 51, 0);
+  }
+}
 @keyframes dropLine {
   0% { transform: translateY(-100%); opacity: 0; }
   20% { opacity: 1; }
@@ -32,7 +66,6 @@
   100% { transform: translateY(300%); opacity: 0; }
 }
 @layer components {
-  /* Globális elrendezések */
   .theme-body {
     @apply relative selection:bg-nothing-red selection:text-white overflow-x-hidden;
   }
