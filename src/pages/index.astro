@@ -156,7 +156,7 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                 <a
                   href="https://smartchaincontrol.szenassy-akos.com"
                   target="_blank"
-                  class="project-card project-card-wide group relative overflow-hidden flex flex-col justify-end min-h-[300px] p-0 border border-gray-800"
+                  class="project-card project-card-wide group relative overflow-hidden flex flex-col justify-end min-h-[300px] md:min-h-[190px] p-0 border border-gray-800"
                 >
                   <div
                     class="absolute inset-0 z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
@@ -215,6 +215,60 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                   </div>
                 </a>
 
+                <div
+                  id="streaming-card"
+                  role="button"
+                  tabindex="0"
+                  aria-haspopup="dialog"
+                  aria-controls="streaming-modal"
+                  class="project-card project-card-wide group relative overflow-hidden flex flex-col justify-end min-h-[300px] md:min-h-[190px] p-0 border border-gray-800 cursor-pointer"
+                >
+                  <!-- Showcase backdrop: a faint network grid washed by a red
+                       signal glow — evokes the tunnelled stream, no stock image. -->
+                  <div
+                    class="absolute inset-0 z-0 opacity-30 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"
+                    style="background-image: radial-gradient(circle at 82% 18%, rgba(255,51,51,0.35), transparent 55%), linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 100% 100%, 26px 26px, 26px 26px;"
+                  >
+                  </div>
+
+                  <div
+                    class="absolute inset-0 z-[1] bg-gradient-to-t from-black via-black/70 to-transparent group-hover:via-black/45 transition-all duration-500"
+                  >
+                  </div>
+
+                  <div class="relative z-10 p-6 flex flex-col h-full justify-end">
+                    <div>
+                      <h3
+                        class="project-title text-xl text-white mb-2 group-hover:text-nothing-red transition-colors"
+                      >
+                        Ultra-Low Latency Remote Streaming
+                      </h3>
+                      <p
+                        class="font-sans text-sm text-gray-400 group-hover:text-gray-300 transition-colors line-clamp-2"
+                      >
+                        Self-hosted Sunshine/Moonlight streaming tunneled out of a
+                        university CGNAT firewall &mdash; a custom FRP reverse-proxy
+                        through a Budapest BIX VPS, cutting 60ms+ to 15&ndash;22ms.
+                      </p>
+                    </div>
+
+                    <div class="mt-5 flex flex-wrap items-center gap-2">
+                      <span
+                        class="font-mono text-[10px] uppercase tracking-wider text-white bg-black/60 border border-gray-700 px-2.5 py-1"
+                        >15&ndash;22ms latency</span
+                      >
+                      <span
+                        class="font-mono text-[10px] uppercase tracking-wider text-white bg-black/60 border border-gray-700 px-2.5 py-1"
+                        >0.00% jitter</span
+                      >
+                      <span
+                        class="font-mono text-[10px] uppercase tracking-wider text-nothing-red bg-black/60 border border-nothing-red/50 px-2.5 py-1 group-hover:bg-nothing-red group-hover:text-white transition-colors"
+                        >Read Case Study -></span
+                      >
+                    </div>
+                  </div>
+                </div>
+
                 <a
                   href="https://github.com/akos050607/SpendSmart"
                   target="_blank"
@@ -243,39 +297,6 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                       Real-time cinema reservation system built with Spring Boot
                       and React, utilizing WebSockets for live seat updates and
                       optimistic locking to prevent double-booking.
-                    </p>
-                  </div>
-                  <span class="project-link">GITHUB -></span>
-                </a>
-
-                <a
-                  href="https://github.com/akos050607/LeaveFlow"
-                  target="_blank"
-                  class="project-card project-card-wide group"
-                >
-                  <div>
-                    <h3 class="project-title text-xl">LeaveFlow</h3>
-                    <p class="font-sans text-sm text-gray-400">
-                      LeaveFlow is a modern, Full-Stack corporate web
-                      application. The project includes a .NET-based REST API
-                      and its corresponding Angular frontend client.
-                    </p>
-                  </div>
-                  <span class="project-link">GITHUB -></span>
-                </a>
-
-                <a
-                  href="https://github.com/akos050607/BillingsAtOnePlace"
-                  target="_blank"
-                  class="project-card project-card-wide group"
-                >
-                  <div>
-                    <h3 class="project-title text-xl">BillingsAtOnePlace</h3>
-                    <p class="font-sans text-sm text-gray-400">
-                      No more manual Excel spreadsheets: whenever you receive a
-                      bank notification on your phone (Revolut, OTP, etc.), the
-                      system captures it, sends it to your PC/Server, where AI
-                      analyzes, categorizes, and saves it.
                     </p>
                   </div>
                   <span class="project-link">GITHUB -></span>
@@ -477,6 +498,241 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
         </p>
       </div>
     </footer>
+
+    <!-- Case study modal: full write-up for the remote-streaming project -->
+    <div
+      id="streaming-modal"
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="streaming-modal-title"
+    >
+      <div
+        id="streaming-modal-backdrop"
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+      >
+      </div>
+
+      <div
+        class="relative z-10 w-full max-w-3xl max-h-[88vh] overflow-y-auto bg-[#0a0a0a] border border-gray-800 text-white shadow-[0_0_60px_rgba(255,51,51,0.15)]"
+      >
+        <div
+          class="sticky top-0 z-10 flex items-start justify-between gap-4 bg-[#0a0a0a]/95 backdrop-blur border-b border-gray-800 px-6 py-5 md:px-10"
+        >
+          <div>
+            <div class="mono-label-red !mb-2">[ Case_Study ]</div>
+            <h2
+              id="streaming-modal-title"
+              class="font-serif text-2xl md:text-3xl leading-tight"
+            >
+              Bypassing Enterprise NAT for Ultra-Low Latency Remote Streaming
+            </h2>
+          </div>
+          <button
+            id="streaming-modal-close"
+            type="button"
+            aria-label="Close case study"
+            class="shrink-0 w-10 h-10 flex items-center justify-center border border-gray-700 text-gray-400 hover:border-nothing-red hover:text-nothing-red transition-colors font-mono text-lg"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="px-6 py-8 md:px-10 md:py-10 space-y-10">
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="border border-gray-800 p-3">
+              <div class="font-mono text-lg md:text-xl text-nothing-red">
+                15&ndash;22ms
+              </div>
+              <div
+                class="font-mono text-[10px] uppercase tracking-wider text-gray-500 mt-1"
+              >
+                Latency
+              </div>
+            </div>
+            <div class="border border-gray-800 p-3">
+              <div class="font-mono text-lg md:text-xl text-nothing-red">
+                0.00%
+              </div>
+              <div
+                class="font-mono text-[10px] uppercase tracking-wider text-gray-500 mt-1"
+              >
+                Jitter
+              </div>
+            </div>
+            <div class="border border-gray-800 p-3">
+              <div class="font-mono text-lg md:text-xl text-nothing-red">
+                ~40%
+              </div>
+              <div
+                class="font-mono text-[10px] uppercase tracking-wider text-gray-500 mt-1"
+              >
+                Less Bandwidth
+              </div>
+            </div>
+          </div>
+
+          <section>
+            <h3
+              class="font-mono text-xs uppercase tracking-widest text-nothing-red mb-3"
+            >
+              The Challenge
+            </h3>
+            <p class="font-sans text-sm text-gray-300 leading-relaxed">
+              Deploying a self-hosted, virtualized remote desktop environment
+              capable of extremely low-latency (&lt;25ms) graphic streaming
+              (Sunshine/Moonlight) behind a strict university enterprise firewall
+              (CGNAT). The network strictly blocks inbound connections and
+              utilizes aggressive UDP timeouts.
+            </p>
+          </section>
+
+          <section>
+            <h3
+              class="font-mono text-xs uppercase tracking-widest text-nothing-red mb-3"
+            >
+              The Architecture &amp; Infrastructure
+            </h3>
+            <ul class="space-y-3 font-sans text-sm text-gray-300 leading-relaxed">
+              <li class="border-l border-gray-800 pl-4">
+                <span class="text-white font-medium">Hypervisor:</span> Proxmox VE
+                running a dedicated Ubuntu 24.04 VM.
+              </li>
+              <li class="border-l border-gray-800 pl-4">
+                <span class="text-white font-medium">Graphic Stack:</span> Nvidia
+                hardware encoding (NVENC), testing HEVC/AV1 profiles, coupled with
+                headless display emulation.
+              </li>
+              <li class="border-l border-gray-800 pl-4">
+                <span class="text-white font-medium">Network Routing:</span> Nginx
+                Proxy Manager for standard web services, alongside a custom
+                tunneling solution for UDP/TCP game streaming traffic.
+              </li>
+              <li class="border-l border-gray-800 pl-4">
+                <span class="text-white font-medium">Remote Gateway:</span> A
+                lightweight Ubuntu VPS hosted in a Budapest datacenter with a
+                direct connection to the BIX (Budapest Internet Exchange) backbone.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3
+              class="font-mono text-xs uppercase tracking-widest text-nothing-red mb-4"
+            >
+              The Troubleshooting Journey
+            </h3>
+
+            <div class="border border-gray-800 p-5 mb-4">
+              <h4 class="font-serif text-lg mb-2">
+                Phase 1 &mdash; Mesh VPN &amp; UDP Hole Punching Failure
+              </h4>
+              <p class="font-sans text-sm text-gray-300 leading-relaxed mb-3">
+                I initially deployed Tailscale to establish a direct P2P
+                connection. While the initial handshake succeeded, the enterprise
+                firewall quickly identified the high-bandwidth UDP stream and
+                closed the hole-punching session.
+              </p>
+              <p class="font-sans text-sm text-gray-400 leading-relaxed">
+                <span class="text-white font-medium">The Symptom:</span> Tailscale
+                forcefully fell back to a secondary DERP relay server located in
+                Frankfurt.
+              </p>
+              <p class="font-sans text-sm text-gray-400 leading-relaxed mt-2">
+                <span class="text-white font-medium">The Impact:</span> Network
+                latency spiked from an acceptable 18ms to an unplayable 60ms+,
+                introducing massive jitter and packet loss due to the geographical
+                detour (Budapest &rarr; Frankfurt &rarr; Budapest).
+              </p>
+            </div>
+
+            <div class="border border-gray-800 p-5">
+              <h4 class="font-serif text-lg mb-2">
+                Phase 2 &mdash; The Reverse Proxy Tunnel (FRP) Injection
+              </h4>
+              <p class="font-sans text-sm text-gray-300 leading-relaxed mb-3">
+                To eliminate the reliance on fragile UDP hole punching and bypass
+                the firewall entirely, I re-architected the network flow using an
+                FRP (Fast Reverse Proxy) tunnel.
+              </p>
+              <ul
+                class="space-y-2 font-sans text-sm text-gray-400 leading-relaxed list-disc pl-5"
+              >
+                <li>
+                  Configured the Rackforest VPS as the public entry point (frps).
+                </li>
+                <li>
+                  Deployed an frpc client within the local Ubuntu VM, establishing
+                  a persistent, outbound-only tunnel to the VPS.
+                </li>
+                <li>
+                  Mapped the specific Sunshine ports (TCP: 47984, 47989, 48010;
+                  UDP: 47998-48002, 48010) through the tunnel directly into the VM.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h3
+              class="font-mono text-xs uppercase tracking-widest text-nothing-red mb-3"
+            >
+              Optimization &amp; Results
+            </h3>
+            <p class="font-sans text-sm text-gray-300 leading-relaxed mb-3">
+              By routing the traffic through the local BIX backbone via the VPS,
+              the geographic distance was minimized.
+            </p>
+            <ul class="space-y-3 font-sans text-sm text-gray-300 leading-relaxed">
+              <li class="border-l border-nothing-red/60 pl-4">
+                <span class="text-white font-medium">Latency:</span> Dropped
+                consistently to 15&ndash;22ms on a 5G/remote wired connection.
+              </li>
+              <li class="border-l border-nothing-red/60 pl-4">
+                <span class="text-white font-medium">Jitter:</span> Reduced to
+                0.00%.
+              </li>
+              <li class="border-l border-nothing-red/60 pl-4">
+                <span class="text-white font-medium">Bandwidth Management:</span>
+                Discovered the ISP's 32GB outbound quota. Optimized the stream by
+                switching to the AV1 encoder and reducing the resolution to
+                1080p@120Hz, cutting the bandwidth requirement by ~40% (down to 12
+                Mbps) without sacrificing perceived fluidity.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3
+              class="font-mono text-xs uppercase tracking-widest text-nothing-red mb-3"
+            >
+              Key Takeaways &amp; DevOps Practices Applied
+            </h3>
+            <ul class="space-y-3 font-sans text-sm text-gray-300 leading-relaxed">
+              <li class="border-l border-gray-800 pl-4">
+                <span class="text-white font-medium"
+                  >Infrastructure as Code (IaC):</span
+                > Configured systemd services for both the FRP client and server to
+                ensure automatic tunnel rebuilding upon VM/VPS reboots.
+              </li>
+              <li class="border-l border-gray-800 pl-4">
+                <span class="text-white font-medium">Network Isolation:</span>
+                Successfully segregated heavy UDP streaming traffic from standard
+                HTTP/HTTPS web traffic handled by Nginx Proxy Manager.
+              </li>
+              <li class="border-l border-gray-800 pl-4">
+                <span class="text-white font-medium"
+                  >Deep Network Diagnostics:</span
+                > Utilized internal metrics and CLI tools to identify the exact
+                point of failure in the mesh VPN handshake and deployed a robust,
+                production-ready reverse proxy alternative.
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+
     <script>
       const wrapper = document.getElementById("slide-fade-wrapper");
       const secProjects = document.getElementById("section-projects");
@@ -532,6 +788,42 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
 
       calculateTarget();
       renderSmoothAnim();
+
+      // Remote-streaming case study modal
+      const streamingCard = document.getElementById("streaming-card");
+      const streamingModal = document.getElementById("streaming-modal");
+      const streamingClose = document.getElementById("streaming-modal-close");
+      const streamingBackdrop = document.getElementById(
+        "streaming-modal-backdrop",
+      );
+
+      const openStreamingModal = () => {
+        if (!streamingModal) return;
+        streamingModal.classList.remove("hidden");
+        streamingModal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+      };
+      const closeStreamingModal = () => {
+        if (!streamingModal) return;
+        streamingModal.classList.add("hidden");
+        streamingModal.classList.remove("flex");
+        document.body.style.overflow = "";
+      };
+
+      streamingCard?.addEventListener("click", openStreamingModal);
+      streamingCard?.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openStreamingModal();
+        }
+      });
+      streamingClose?.addEventListener("click", closeStreamingModal);
+      streamingBackdrop?.addEventListener("click", closeStreamingModal);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && streamingModal && !streamingModal.classList.contains("hidden")) {
+          closeStreamingModal();
+        }
+      });
     </script>
   </body>
 </html>
