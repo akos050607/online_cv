@@ -1,48 +1,27 @@
-import React, { useState, useRef, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Center } from "@react-three/drei";
-import * as THREE from "three";
+import React, { useState, lazy, Suspense } from "react";
 
-// --- 3D MODELL KOMPONENS ---
-function AvatarModel() {
-  // A modell betöltése az images mappából
-  const { scene } = useGLTF("/images/me.glb");
-  const modelRef = useRef();
+// A three.js-t használó rész külön chunk: csak az első hoverre töltjük le.
+const ProfileModel = lazy(() => import("./ProfileModel.jsx"));
 
-  // Balra forgatás (90 fok, radianban: -PI / 2)
-  const baseRotationY = -Math.PI / 2;
-
-  useFrame((state) => {
-    if (!modelRef.current) return;
-
-    const mouseXOffset = (state.pointer.x * Math.PI) / 6;
-    const mouseYOffset = (state.pointer.y * Math.PI) / 6;
-
-    const targetX = -mouseYOffset; 
-    const targetY = baseRotationY + mouseXOffset; 
-
-    modelRef.current.rotation.x = THREE.MathUtils.lerp(modelRef.current.rotation.x, targetX, 0.1);
-    modelRef.current.rotation.y = THREE.MathUtils.lerp(modelRef.current.rotation.y, targetY, 0.1);
-  });
-
-  return (
-    <group ref={modelRef}>
-      {/* MÓDOSÍTÁS: A scale értékét 3.8-ra növeltem, hogy még nagyobb legyen.
-        Ha tovább szeretnéd növelni, írd át pl. 4.5-re, vagy csökkentsd 3.0-ra! 
-      */}
-      <primitive object={scene} scale={3.8} />
-    </group>
-  );
-}
-
-// --- FŐ KOMPONENS ---
 export default function ProfileHologram() {
   const [hovered, setHovered] = useState(false);
+  // Ha egyszer betöltöttük, maradjon a DOM-ban, hogy a következő hover azonnali legyen.
+  const [modelRequested, setModelRequested] = useState(false);
+  // A fotó CSAK akkor tűnik el, ha a modell tényleg kirajzolódott. Ha a 3D
+  // bármiért nem jön be, a látogató a képet látja - soha nem üres panelt.
+  const [modelReady, setModelReady] = useState(false);
+
+  const enter = () => {
+    setHovered(true);
+    setModelRequested(true);
+  };
+
+  const showModel = hovered && modelReady;
 
   return (
     <div
       className="w-full h-full min-h-[400px] md:min-h-[500px] relative flex items-center justify-center p-8 bg-transparent cursor-crosshair"
-      onPointerEnter={() => setHovered(true)}
+      onPointerEnter={enter}
       onPointerLeave={() => setHovered(false)}
     >
       {/* Státusz Indikátor */}
@@ -57,7 +36,7 @@ export default function ProfileHologram() {
         <div
           className={`font-mono text-[10px] tracking-[0.2em] transition-colors duration-300 ${hovered ? "text-black" : "text-gray-400"}`}
         >
-          {hovered ? "FUNNY_3D_SCAN" : "STANDBY"}
+          {showModel ? "FUNNY_3D_SCAN" : hovered ? "LOADING" : "STANDBY"}
         </div>
       </div>
 
@@ -77,34 +56,31 @@ export default function ProfileHologram() {
 
         {/* --- KÉP ÉS 3D MODELL KONTÉNER --- */}
         <div className="absolute inset-0 w-full h-full bg-[#f4f4f4] overflow-hidden">
-          
-          {/* Színes 2D Kép */}
+          {/* Színes 2D Kép — ez tölt be azonnal */}
           <img
             src="/images/me.jpg"
-            alt="Profile"
+            alt="Szénássy Ákos"
+            width="750"
+            height="1000"
+            fetchpriority="high"
             className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out z-10 ${
-              hovered
+              showModel
                 ? "opacity-0 scale-105 pointer-events-none"
                 : "opacity-100 contrast-[0.85] scale-[0.96]"
             }`}
           />
 
-          {/* 3D Canvas */}
-          <div 
+          {/* 3D Canvas — lusta betöltés */}
+          <div
             className={`absolute inset-0 w-full h-full transition-all duration-700 ease-out z-0 flex items-center justify-center ${
-              hovered ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              showModel ? "opacity-100 scale-100" : "opacity-0 scale-95"
             }`}
           >
-            <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-              <ambientLight intensity={1.5} />
-              <directionalLight position={[5, 5, 5]} intensity={1.5} />
-              
+            {modelRequested && (
               <Suspense fallback={null}>
-                <Center>
-                  <AvatarModel />
-                </Center>
+                <ProfileModel onReady={() => setModelReady(true)} />
               </Suspense>
-            </Canvas>
+            )}
           </div>
         </div>
 
@@ -119,6 +95,3 @@ export default function ProfileHologram() {
     </div>
   );
 }
-
-// A modell előtöltése
-useGLTF.preload("/images/me.glb");

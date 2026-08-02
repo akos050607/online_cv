@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import SystemCore from "../components/SystemCore.jsx";
 import ProfileHologram from "../components/ProfileHologram.jsx";
 ---
 
@@ -21,14 +20,24 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
         >
           <div class="glass-panel justify-center">
             <div class="mono-label-red">[ 01_Profile ]</div>
-            <h1 class="heading-primary">Szénássy Ákos</h1>
+            <h1 class="heading-primary !mb-3">Szénássy Ákos</h1>
+            <p
+              class="font-mono text-[10px] md:text-xs tracking-[0.2em] uppercase text-nothing-red mb-5"
+            >
+              Cloud &amp; Infrastructure Engineering
+            </p>
             <p class="font-sans text-base text-gray-700 leading-relaxed mb-8">
-              Computer Science Engineering student at BME.<br />
-              Excellent problem-solving skills and a team-player mindset. My goal
-              is to secure a challenging internship position.
+              Computer Science Engineering student at BME, currently a software
+              developer intern at Bosch. I run a hybrid
+              <strong class="font-medium text-black">Kubernetes</strong> cluster across
+              cloud and edge, with Helm releases behind TLS ingress,
+              Prometheus-driven autoscaling, and
+              <strong class="font-medium text-black">Keycloak</strong> handling
+              authentication for my own applications &mdash; provisioned with
+              Terraform, deployed by GitHub Actions.
             </p>
             <div
-              class="font-mono text-[10px] md:text-xs text-gray-400 pt-4 border-t border-gray-200 mt-auto flex justify-between"
+              class="font-mono text-[10px] md:text-xs text-gray-400 pt-4 border-t border-gray-200 mt-auto flex justify-between items-center gap-3"
             >
               <span>LOC: Budapest</span>
               <a
@@ -53,7 +62,32 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
             <div
               class="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[250px] md:w-[350px] h-[250px] md:h-[350px] opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none"
             >
-              <SystemCore client:only="react" />
+              <!-- Wireframe "system core". Pure SVG + CSS: identical read at this
+                   size and opacity, but it costs no JavaScript at all. -->
+              <svg
+                viewBox="0 0 300 300"
+                aria-hidden="true"
+                class="w-full h-full"
+              >
+                <g class="core-spin" fill="none" stroke="#000" stroke-opacity="0.15">
+                  <circle cx="150" cy="150" r="110"></circle>
+                  <ellipse cx="150" cy="150" rx="74" ry="110"></ellipse>
+                  <ellipse cx="150" cy="150" rx="36" ry="110"></ellipse>
+                  <ellipse cx="150" cy="150" rx="110" ry="74"></ellipse>
+                  <ellipse cx="150" cy="150" rx="110" ry="36"></ellipse>
+                </g>
+                <g
+                  class="core-spin-slow"
+                  fill="none"
+                  stroke="#000"
+                  stroke-opacity="0.1"
+                  stroke-dasharray="3 7"
+                >
+                  <circle cx="150" cy="150" r="132"></circle>
+                </g>
+                <circle class="core-pulse" cx="150" cy="150" r="9" fill="#cc0000"
+                ></circle>
+              </svg>
             </div>
 
             <div class="relative z-10 mt-auto">
@@ -63,13 +97,25 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
               <div class="flex items-center gap-2 mb-6">
                 <div class="w-2 h-2 rounded-full bg-nothing-red animate-pulse">
                 </div>
+                <span class="font-mono text-[10px] tracking-widest uppercase text-gray-500"
+                  >Budapest &middot; available now</span
+                >
               </div>
-              <a
-                href="mailto:szenassy.akos5@gmail.com"
-                class="font-mono text-xs md:text-sm border-b border-black pb-1 hover:text-nothing-red hover:border-nothing-red transition-colors inline-block"
-              >
-                [ CONTACT_ME ]
-              </a>
+
+              <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+                <a
+                  href="mailto:szenassy.akos5@gmail.com"
+                  class="font-mono text-xs md:text-sm border-b border-black pb-1 hover:text-nothing-red hover:border-nothing-red transition-colors inline-block"
+                >
+                  [ CONTACT_ME ]
+                </a>
+                <a
+                  href="#role-fit"
+                  class="font-mono text-xs md:text-sm text-nothing-red border-b border-nothing-red pb-1 hover:text-black hover:border-black transition-colors inline-block"
+                >
+                  [ ROLE_FIT ]
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -112,14 +158,17 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
               </div>
 
               <div class="project-grid">
-                <a
-                  href="https://github.com/akos050607/K3d-chaos-cluster"
-                  target="_blank"
-                  class="project-card project-card-large group relative overflow-hidden flex flex-col justify-end min-h-[300px] md:min-h-[400px] p-0 border border-gray-800"
+                <div
+                  role="button"
+                  tabindex="0"
+                  data-modal-open="k3s-modal"
+                  aria-haspopup="dialog"
+                  aria-controls="k3s-modal"
+                  class="project-card project-card-large group relative overflow-hidden flex flex-col justify-end min-h-[300px] md:min-h-[400px] p-0 border border-gray-800 cursor-pointer"
                 >
                   <img
-                    src="/images/kubernetes.png"
-                    alt="K3d Chaos Cluster Preview"
+                    src="/images/kubernetes.jpg"
+                    alt="Hybrid K3s cluster"
                     class="absolute inset-0 w-full h-full object-cover z-0 opacity-20 grayscale group-hover:opacity-50 group-hover:grayscale-0 transition-all duration-700"
                   />
 
@@ -135,23 +184,31 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                       <h3
                         class="project-title md:text-3xl text-white group-hover:text-nothing-red transition-colors duration-300 mb-3"
                       >
-                        K3d-chaos-cluster
+                        Hybrid Zero-Trust K3s Cluster
                       </h3>
                       <p
                         class="font-sans text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors duration-300"
                       >
-                        A practical lab demonstrating a zero-trust hybrid
-                        Kubernetes cluster (K3s + Tailscale) with chaos
-                        engineering, self-healing, and HPA auto-scaling across
-                        cloud and edge nodes.
+                        A cloud node and a physical edge node joined over a
+                        Tailscale mesh with zero inbound ports. Helm releases
+                        behind TLS ingress, Prometheus-driven autoscaling,
+                        Terraform-provisioned VMs, GitHub Actions CI &mdash; and a
+                        chaos engineering log of what broke.
                       </p>
                     </div>
-                    <span
-                      class="project-link mt-8 text-gray-500 group-hover:text-white transition-colors duration-300"
-                      >GITHUB -></span
-                    >
+
+                    <div class="mt-6 flex flex-wrap items-center gap-2">
+                      <span class="stat-chip">K3s + Helm</span>
+                      <span class="stat-chip">Prometheus / Grafana</span>
+                      <span class="stat-chip">Terraform</span>
+                      <span class="stat-chip">Azure</span>
+                      <span
+                        class="font-mono text-[10px] uppercase tracking-wider text-nothing-red bg-black/60 border border-nothing-red/50 px-2.5 py-1 group-hover:bg-nothing-red group-hover:text-white transition-colors"
+                        >Read Case Study -></span
+                      >
+                    </div>
                   </div>
-                </a>
+                </div>
 
                 <a
                   href="https://smartchaincontrol.szenassy-akos.com"
@@ -191,8 +248,9 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                       <p
                         class="font-sans text-sm text-gray-200 leading-relaxed"
                       >
-                        Real-time Digital Twin Warehouse Simulator built with
-                        .NET 10, Blazor WebAssembly, and SignalR.
+                        A real-time digital twin simulator I containerised and
+                        deployed on my own cluster &mdash; served over TLS through
+                        my ingress, and running in production right now.
                       </p>
                     </div>
 
@@ -216,9 +274,9 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                 </a>
 
                 <div
-                  id="streaming-card"
                   role="button"
                   tabindex="0"
+                  data-modal-open="streaming-modal"
                   aria-haspopup="dialog"
                   aria-controls="streaming-modal"
                   class="project-card project-card-wide group relative overflow-hidden flex flex-col justify-end min-h-[300px] md:min-h-[190px] p-0 border border-gray-800 cursor-pointer"
@@ -241,14 +299,15 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                       <h3
                         class="project-title text-xl text-white mb-2 group-hover:text-nothing-red transition-colors"
                       >
-                        Ultra-Low Latency Remote Streaming
+                        NAT Traversal for a Low-Latency Remote Desktop
                       </h3>
                       <p
                         class="font-sans text-sm text-gray-400 group-hover:text-gray-300 transition-colors line-clamp-2"
                       >
-                        Self-hosted Sunshine/Moonlight streaming tunneled out of a
-                        university CGNAT firewall &mdash; a custom FRP reverse-proxy
-                        through a Budapest BIX VPS, cutting 60ms+ to 15&ndash;22ms.
+                        Getting a self-hosted service out of an enterprise CGNAT
+                        firewall that blocks all inbound traffic &mdash; an
+                        outbound-only FRP reverse tunnel through a Budapest BIX
+                        VPS, cutting 60&nbsp;ms+ to 15&ndash;22&nbsp;ms.
                       </p>
                     </div>
 
@@ -269,6 +328,56 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                   </div>
                 </div>
 
+                <!-- Identity project: OIDC/SAML are the nice-to-haves on the posting
+                     that are actually this employer's product. Highest-leverage card. -->
+                <div
+                  role="button"
+                  tabindex="0"
+                  data-modal-open="keycloak-modal"
+                  aria-haspopup="dialog"
+                  aria-controls="keycloak-modal"
+                  class="project-card project-card-wide group relative overflow-hidden flex flex-col justify-end min-h-[300px] md:min-h-[190px] p-0 border border-gray-800 cursor-pointer"
+                >
+                  <!-- Identity backdrop: concentric trust rings, no stock image. -->
+                  <div
+                    class="absolute inset-0 z-0 opacity-30 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"
+                    style="background-image: radial-gradient(circle at 20% 80%, rgba(255,51,51,0.3), transparent 50%), repeating-radial-gradient(circle at 20% 80%, transparent 0 22px, rgba(255,255,255,0.06) 22px 23px);"
+                  >
+                  </div>
+
+                  <div
+                    class="absolute inset-0 z-[1] bg-gradient-to-t from-black via-black/70 to-transparent group-hover:via-black/45 transition-all duration-500"
+                  >
+                  </div>
+
+                  <div class="relative z-10 p-6 flex flex-col h-full justify-end">
+                    <div>
+                      <h3
+                        class="project-title text-xl text-white mb-2 group-hover:text-nothing-red transition-colors"
+                      >
+                        Keycloak Identity Provider on K3s
+                      </h3>
+                      <p
+                        class="font-sans text-sm text-gray-400 group-hover:text-gray-300 transition-colors line-clamp-2"
+                      >
+                        Keycloak deployed by Helm behind TLS ingress, protecting a
+                        real application with an OpenID Connect authorization code
+                        flow &mdash; plus a SAML client built alongside it to compare
+                        the two federation protocols end to end.
+                      </p>
+                    </div>
+
+                    <div class="mt-5 flex flex-wrap items-center gap-2">
+                      <span class="stat-chip">OIDC + PKCE</span>
+                      <span class="stat-chip">SAML 2.0</span>
+                      <span
+                        class="font-mono text-[10px] uppercase tracking-wider text-nothing-red bg-black/60 border border-nothing-red/50 px-2.5 py-1 group-hover:bg-nothing-red group-hover:text-white transition-colors"
+                        >Read Case Study -></span
+                      >
+                    </div>
+                  </div>
+                </div>
+
                 <a
                   href="https://github.com/akos050607/SpendSmart"
                   target="_blank"
@@ -277,10 +386,10 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                   <div>
                     <h3 class="project-title">SpendSmart</h3>
                     <p class="font-sans text-sm text-gray-400 line-clamp-4">
-                      Automated expense tracking pipeline that extracts
-                      structured data from receipt images using OCR/LLMs and
-                      stores it in PostgreSQL for real-time Streamlit
-                      visualization.
+                      Expense pipeline extracting structured data from receipt
+                      images via OCR/LLMs into PostgreSQL &mdash; and the
+                      application now sitting behind Keycloak as the OIDC-protected
+                      resource.
                     </p>
                   </div>
                   <span class="project-link">GITHUB -></span>
@@ -294,9 +403,9 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                   <div>
                     <h3 class="project-title">PremiereFlow</h3>
                     <p class="font-sans text-sm text-gray-400 line-clamp-4">
-                      Real-time cinema reservation system built with Spring Boot
-                      and React, utilizing WebSockets for live seat updates and
-                      optimistic locking to prevent double-booking.
+                      Spring Boot REST API with a React client, using WebSockets
+                      for live seat updates and optimistic locking to survive
+                      concurrent bookings without double-selling a seat.
                     </p>
                   </div>
                   <span class="project-link">GITHUB -></span>
@@ -327,28 +436,264 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
             id="section-tech"
             class="absolute inset-0 w-full h-full bg-white flex items-center justify-center p-6 md:p-12 will-change-transform translate-x-full shadow-[-20px_0_50px_rgba(0,0,0,0.5)]"
           >
+            <!-- Ordering is deliberate: infrastructure first, application code after.
+                 For cloud roles the old ordering read as "backend dev with a homelab". -->
             <div
-              class="max-w-5xl w-full bg-gray-50 border border-gray-200 p-10 md:p-16 shadow-sm text-center"
+              class="max-w-6xl w-full bg-gray-50 border border-gray-200 p-6 md:p-12 shadow-sm max-h-[85vh] overflow-y-auto"
             >
-              <div class="mono-label-red !mb-10">[ 03_Tech_Stack ]</div>
-              <div
-                class="flex flex-wrap justify-center gap-4 md:gap-6 font-sans text-sm md:text-base"
-              >
-                <span class="tech-badge">C# / .NET 9/10</span>
-                <span class="tech-badge">Java / Spring Boot</span>
-                <span class="tech-badge"
-                  >Angular / React / Blazor -> minimal</span
-                >
-                <span class="tech-badge">SQL</span>
-                <span class="tech-badge">Kubernetes / Docker</span>
-                <span class="tech-badge">WebSockets / SignalR</span>
-                <span class="tech-badge">Cloud / CI/CD</span>
-                <span class="tech-badge">Git / GitHub</span>
+              <div class="mono-label-red !mb-8 text-center">
+                [ 03_Tech_Stack ]
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+                <div class="tech-group">
+                  <div class="tech-group-label">Cloud &amp; Containers</div>
+                  <div class="tech-badges">
+                    <span class="tech-badge">Azure</span>
+                    <span class="tech-badge">Kubernetes / K3s</span>
+                    <span class="tech-badge">Docker</span>
+                    <span class="tech-badge">Helm</span>
+                    <span class="tech-badge">Proxmox VE</span>
+                    <span class="tech-badge">Hetzner Cloud</span>
+                  </div>
+                </div>
+
+                <div class="tech-group">
+                  <div class="tech-group-label">CI/CD &amp; IaC</div>
+                  <div class="tech-badges">
+                    <span class="tech-badge">GitHub Actions</span>
+                    <span class="tech-badge">Terraform</span>
+                    <span class="tech-badge">Automated testing</span>
+                    <span class="tech-badge">kubeconform</span>
+                    <span class="tech-badge">GHCR</span>
+                    <span class="tech-badge">Git / GitHub</span>
+                  </div>
+                </div>
+
+                <div class="tech-group">
+                  <div class="tech-group-label">Identity &amp; Security</div>
+                  <div class="tech-badges">
+                    <span class="tech-badge">Keycloak</span>
+                    <span class="tech-badge">OAuth 2.0 / OIDC</span>
+                    <span class="tech-badge">SAML 2.0</span>
+                    <span class="tech-badge">TLS / cert-manager</span>
+                    <span class="tech-badge">Tailscale zero-trust</span>
+                  </div>
+                </div>
+
+                <div class="tech-group">
+                  <div class="tech-group-label">Observability</div>
+                  <div class="tech-badges">
+                    <span class="tech-badge">Prometheus</span>
+                    <span class="tech-badge">Grafana</span>
+                    <span class="tech-badge">metrics-server / HPA</span>
+                    <span class="tech-badge">ApacheBench</span>
+                  </div>
+                </div>
+
+                <div class="tech-group">
+                  <div class="tech-group-label">Networking &amp; Linux</div>
+                  <div class="tech-badges">
+                    <span class="tech-badge">Ubuntu / Debian</span>
+                    <span class="tech-badge">Bash scripting</span>
+                    <span class="tech-badge">Nginx ingress</span>
+                    <span class="tech-badge">systemd</span>
+                    <span class="tech-badge">FRP tunneling</span>
+                    <span class="tech-badge">DNS / NAT traversal</span>
+                  </div>
+                </div>
+
+                <div class="tech-group">
+                  <div class="tech-group-label">Programming</div>
+                  <div class="tech-badges">
+                    <span class="tech-badge">Go</span>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Java / Spring Boot</span>
+                    <span class="tech-badge">C# / .NET</span>
+                    <span class="tech-badge">TypeScript</span>
+                    <span class="tech-badge">REST APIs</span>
+                    <span class="tech-badge">PostgreSQL / SQL</span>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
         </div>
       </div>
+
+      <!-- Requirement-to-evidence map. A recruiter screening a stack of CVs
+           should be able to tick every line on the posting without hunting. -->
+      <section
+        id="role-fit"
+        class="w-full bg-white py-24 md:py-32 px-6 relative z-10 scroll-mt-0"
+      >
+        <div class="max-w-5xl mx-auto">
+          <div class="mono-label-red !mb-4">[ 04_Role_Fit ]</div>
+          <h2 class="font-serif text-3xl md:text-5xl leading-tight mb-4">
+            What the role asks for, and what I have built.
+          </h2>
+          <p
+            class="font-sans text-sm md:text-base text-gray-600 max-w-2xl leading-relaxed mb-14"
+          >
+            Rows marked with an arrow open the full write-up.
+          </p>
+
+          <div class="border-t border-gray-300">
+            <div
+              role="button"
+              tabindex="0"
+              data-modal-open="k3s-modal"
+              class="fit-row fit-row-clickable"
+            >
+              <div class="fit-req">Major cloud platform</div>
+              <div class="fit-ev">
+                Azure &mdash; the cluster workload redeployed onto Azure VMs and
+                provisioned with the <code>azurerm</code> Terraform provider.
+              </div>
+              <div class="fit-arrow">-></div>
+            </div>
+
+            <div
+              role="button"
+              tabindex="0"
+              data-modal-open="k3s-modal"
+              class="fit-row fit-row-clickable"
+            >
+              <div class="fit-req">Docker, Kubernetes &amp; Helm</div>
+              <div class="fit-ev">
+                Services containerised with multi-stage Dockerfiles and
+                orchestrated on a two-node hybrid K3s cluster across cloud and
+                edge. Helm releases, TLS ingress, HPA autoscaling under real
+                load, and a documented chaos engineering log.
+              </div>
+              <div class="fit-arrow">-></div>
+            </div>
+
+            <div class="fit-row">
+              <div class="fit-req">CI/CD automation</div>
+              <div class="fit-ev">
+                GitHub Actions pipelines covering build, test and deploy: unit
+                tests and kubeconform manifest validation run before anything
+                else, then the container image is built and pushed to GHCR on
+                tag. This site rebuilds and deploys itself on every push to
+                <code>main</code>.
+              </div>
+              <div class="fit-arrow-empty"></div>
+            </div>
+
+            <div class="fit-row">
+              <div class="fit-req">Software quality &amp; security</div>
+              <div class="fit-ev">
+                Nothing reaches an environment unchecked: automated tests and
+                manifest validation gate every pipeline, and at Bosch I work
+                inside a pull-request and code-review workflow. On the
+                infrastructure side that means TLS everywhere, no inbound ports
+                on the edge node, and secrets kept out of the repositories.
+              </div>
+              <div class="fit-arrow-empty"></div>
+            </div>
+
+            <div
+              role="button"
+              tabindex="0"
+              data-modal-open="streaming-modal"
+              class="fit-row fit-row-clickable"
+            >
+              <div class="fit-req">Linux &amp; networking</div>
+              <div class="fit-ev">
+                Ubuntu and Proxmox VE administration, systemd units, Nginx
+                ingress and proxying, DNS and TLS &mdash; including a reverse
+                tunnel that gets traffic out of an enterprise CGNAT firewall at
+                15&ndash;22 ms.
+              </div>
+              <div class="fit-arrow">-></div>
+            </div>
+
+            <div
+              role="button"
+              tabindex="0"
+              data-modal-open="keycloak-modal"
+              class="fit-row fit-row-clickable"
+            >
+              <div class="fit-req">
+                OAuth 2.0 / OIDC / SAML
+              </div>
+              <div class="fit-ev">
+                A Keycloak realm running on my own cluster: authorization code
+                flow with PKCE protecting a real application, plus a SAML 2.0
+                client built alongside it to compare both federation protocols
+                first-hand.
+              </div>
+              <div class="fit-arrow">-></div>
+            </div>
+
+            <div class="fit-row">
+              <div class="fit-req">
+                Infrastructure as Code
+              </div>
+              <div class="fit-ev">
+                Terraform against the <code>hcloud</code> and
+                <code>azurerm</code> providers &mdash; VMs, networks and firewall
+                rules declared in HCL, so the environment rebuilds from nothing.
+              </div>
+              <div class="fit-arrow-empty"></div>
+            </div>
+
+            <div class="fit-row">
+              <div class="fit-req">
+                Monitoring &amp; observability
+              </div>
+              <div class="fit-ev">
+                Prometheus and Grafana via kube-prometheus-stack, with
+                autoscaling driven off live metrics and the load test captured on
+                a dashboard rather than described in a sentence.
+              </div>
+              <div class="fit-arrow-empty"></div>
+            </div>
+
+            <div class="fit-row">
+              <div class="fit-req">Scripting &amp; programming</div>
+              <div class="fit-ev">
+                Go and TypeScript daily at Bosch. Bash for cluster and server
+                automation, Python, Java / Spring Boot and C# / .NET in my own
+                projects &mdash; mostly building and consuming HTTP REST APIs.
+              </div>
+              <div class="fit-arrow-empty"></div>
+            </div>
+
+            <div class="fit-row">
+              <div class="fit-req">Agile &amp; teamwork</div>
+              <div class="fit-ev">
+                At Bosch I work in an agile, sprint-based team spread across
+                sites and countries, taking tickets through design, review and
+                release. Alongside that I manage my own projects end to end, so
+                I am used to both working modes.
+              </div>
+              <div class="fit-arrow-empty"></div>
+            </div>
+
+            <!-- VERIFY: adjust the two rows above/below if your Bosch team is not
+                 sprint-based, multi-site, or English-speaking day to day. -->
+            <div class="fit-row">
+              <div class="fit-req">English</div>
+              <div class="fit-ev">
+                English is the working language of my team at Bosch &mdash;
+                spoken daily in stand-ups and reviews. Every case study,
+                repository and README on this site is written in English.
+              </div>
+              <div class="fit-arrow-empty"></div>
+            </div>
+
+            <div class="fit-row">
+              <div class="fit-req">Location</div>
+              <div class="fit-ev">
+                Based in Budapest and available to work on-site.
+              </div>
+              <div class="fit-arrow-empty"></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section class="section-container bg-[#f4f4f4]">
         <div
@@ -359,7 +704,7 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
 
         <div class="max-w-5xl w-full relative z-10 py-12">
           <div class="mono-label-red text-center !mb-16 md:!mb-24">
-            [ 04_Journey ]
+            [ 05_Journey ]
           </div>
 
           <div
@@ -377,7 +722,7 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
               </div>
               <div class="md:col-span-3 text-left md:text-right mt-1 md:mt-0">
                 <div class="font-mono text-sm text-nothing-red mb-1">
-                  Present
+                  Jan 2026 &ndash; Present
                 </div>
                 <div class="font-serif text-2xl">Bosch</div>
               </div>
@@ -392,6 +737,16 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                   In my daily work, I use <strong>Go</strong>, <strong
                     >TypeScript</strong
                   >, and <strong>Svelte</strong> on live, corporate projects.
+                </p>
+                <p
+                  class="text-gray-700 font-sans leading-relaxed text-sm md:text-base mt-4"
+                >
+                  The team is <strong>agile and international</strong>, spread
+                  across sites and working in English. Features go through
+                  specification, design, implementation, tests and peer
+                  <strong>code review</strong> before they are released &mdash; my
+                  first experience of the full development cycle rather than just
+                  the coding part.
                 </p>
               </div>
             </div>
@@ -430,14 +785,16 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
               </div>
               <div class="journey-panel group-hover:border-black">
                 <h3 class="font-bold text-xl text-gray-700 mb-3">
-                  Personal Projects
+                  Self-Directed Infrastructure Work
                 </h3>
                 <p
                   class="text-gray-500 font-sans leading-relaxed text-sm md:text-base"
                 >
-                  Developing various complex personal projects (Kubernetes,
-                  .NET, Spring Boot) to continuously broaden my perspective and
-                  apply cutting-edge technologies.
+                  I run my own environment: a hybrid K3s cluster across cloud and
+                  edge, an identity provider issuing OIDC tokens,
+                  Terraform-provisioned VMs, GitHub Actions pipelines and
+                  Prometheus dashboards &mdash; including this site, which deploys
+                  itself on every push to main.
                 </p>
               </div>
             </div>
@@ -447,31 +804,111 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
 
       <section class="section-container bg-white">
         <div
-          class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 relative z-10 py-12"
+          class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 relative z-10 py-12"
         >
           <div class="border-t-2 border-black pt-8">
-            <div class="mono-label-red !mb-8">[ 05_Language ]</div>
-            <h3 class="heading-primary !mb-6">
-              English <br />
+            <div class="mono-label-red !mb-8">[ 06_Education ]</div>
+            <h3 class="heading-primary !text-3xl md:!text-4xl !mb-6">
+              BME <br /><span class="text-gray-400">CS Engineering BSc</span>
             </h3>
-            <div class="font-mono text-sm text-black mb-2">
-              Confident communication
+            <div class="font-mono text-sm text-black mb-3">
+              Sep 2024 &ndash; expected late 2027
             </div>
-            <div class="font-mono text-xs text-gray-500">
-              In both professional and everyday environments.
+            <div class="font-mono text-xs text-gray-500 leading-relaxed">
+              Budapest University of Technology and Economics &mdash; active
+              student alongside my internship.
             </div>
           </div>
 
           <div class="border-t-2 border-black pt-8">
-            <div class="mono-label !mb-8">[ 06_Hobbies ]</div>
-            <h3 class="heading-primary !mb-6">
-              Gym <br />& <span class="text-gray-400">Running</span>
+            <div class="mono-label-red !mb-8">[ 07_Languages ]</div>
+            <h3 class="heading-primary !text-3xl md:!text-4xl !mb-6">
+              English <br /><span class="text-gray-400">Hungarian</span>
             </h3>
-
-            <div class="font-mono text-xs text-gray-500">
-              An active lifestyle to maintain focus and health.
+            <div class="font-mono text-sm text-black mb-3">
+              Confident &middot; Native
+            </div>
+            <div class="font-mono text-xs text-gray-500 leading-relaxed">
+              Every case study, repository and README on this site is written in
+              English.
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- Closing contact block: everything a recruiter needs to act, in one place. -->
+      <section class="w-full bg-black text-white py-24 md:py-32 px-6 relative z-10">
+        <div class="max-w-5xl mx-auto">
+          <div class="mono-label-red !mb-4">[ 08_Contact ]</div>
+          <h2 class="font-serif text-3xl md:text-5xl leading-tight mb-6">
+            Ready to start.
+          </h2>
+          <p
+            class="font-sans text-sm md:text-base text-gray-400 max-w-2xl leading-relaxed mb-12"
+          >
+            I am looking for a cloud and infrastructure role. Everything on this
+            page is mine, running, and documented &mdash; ask me to walk through
+            any of it.
+          </p>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-800 border border-gray-800 mb-12"
+          >
+            <div class="contact-cell">
+              <div class="contact-k">Email</div>
+              <a
+                href="mailto:szenassy.akos5@gmail.com"
+                class="contact-v hover:text-nothing-red transition-colors break-all"
+                >szenassy.akos5@gmail.com</a
+              >
+            </div>
+            <div class="contact-cell">
+              <div class="contact-k">Phone</div>
+              <a
+                href="tel:+36302527945"
+                class="contact-v hover:text-nothing-red transition-colors"
+                >+36 30 252 7945</a
+              >
+            </div>
+            <div class="contact-cell">
+              <div class="contact-k">GitHub</div>
+              <a
+                href="https://github.com/akos050607"
+                target="_blank"
+                rel="noopener"
+                class="contact-v hover:text-nothing-red transition-colors"
+                >akos050607</a
+              >
+            </div>
+            <div class="contact-cell">
+              <div class="contact-k">LinkedIn</div>
+              <a
+                href="https://www.linkedin.com/in/akos-szenassy-64006238b"
+                target="_blank"
+                rel="noopener"
+                class="contact-v hover:text-nothing-red transition-colors break-all"
+                >akos-szenassy</a
+              >
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-8 md:gap-14 items-start">
+            <div>
+              <div class="contact-k !text-gray-500">Availability</div>
+              <div class="font-mono text-sm text-white mt-1">Available now</div>
+            </div>
+            <div>
+              <div class="contact-k !text-gray-500">Base</div>
+              <div class="font-mono text-sm text-white mt-1">Budapest</div>
+            </div>
+          </div>
+
+          <a
+            href="mailto:szenassy.akos5@gmail.com"
+            class="inline-block mt-12 font-mono text-sm border border-white px-8 py-4 hover:bg-nothing-red hover:border-nothing-red transition-colors"
+          >
+            [ CONTACT_ME -> ]
+          </a>
         </div>
       </section>
     </main>
@@ -499,40 +936,608 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
       </div>
     </footer>
 
+    <!-- ============ Case study modal: hybrid K3s cluster ============ -->
+    <div
+      id="k3s-modal"
+      class="case-modal fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="k3s-modal-title"
+    >
+      <div data-modal-close class="absolute inset-0 bg-black/80 backdrop-blur-sm">
+      </div>
+
+      <div class="case-modal-sheet">
+        <div class="case-modal-head">
+          <div>
+            <div class="mono-label-red !mb-2">[ Case_Study ]</div>
+            <h2
+              id="k3s-modal-title"
+              class="font-serif text-2xl md:text-3xl leading-tight"
+            >
+              A Hybrid Zero-Trust Kubernetes Cluster Across Cloud and Edge
+            </h2>
+          </div>
+          <button
+            type="button"
+            data-modal-close
+            aria-label="Close case study"
+            class="case-modal-close">✕</button
+          >
+        </div>
+
+        <div class="px-6 py-8 md:px-10 md:py-10 space-y-10">
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="border border-gray-800 p-3">
+              <div class="font-mono text-lg md:text-xl text-nothing-red">2</div>
+              <div class="stat-cap">Nodes, 2 Networks</div>
+            </div>
+            <div class="border border-gray-800 p-3">
+              <!-- VERIFY: replace with your actual HPA scaling range -->
+              <div class="font-mono text-lg md:text-xl text-nothing-red">
+                2 &rarr; <span class="ph-inline">8</span>
+              </div>
+              <div class="stat-cap">Replicas Under Load</div>
+            </div>
+            <div class="border border-gray-800 p-3">
+              <div class="font-mono text-lg md:text-xl text-nothing-red">0</div>
+              <div class="stat-cap">Inbound Ports Open</div>
+            </div>
+          </div>
+
+          <!-- ---------- Architecture diagram ---------- -->
+          <section>
+            <h3 class="case-h3">Architecture</h3>
+            <div class="border border-gray-800 bg-black p-4 overflow-x-auto">
+              <svg
+                viewBox="0 0 760 440"
+                role="img"
+                aria-label="Architecture diagram: an edge node and a cloud node joined by a Tailscale WireGuard mesh, with inbound traffic blocked at the edge, TLS ingress on the cloud node, and GitHub Actions and Terraform feeding the cluster from below."
+                class="w-full min-w-[600px] h-auto"
+                font-family="DotGothic16, monospace"
+              >
+                <defs>
+                  <marker
+                    id="arrow-red"
+                    markerWidth="8"
+                    markerHeight="8"
+                    refX="6"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <path d="M0,0 L6,3 L0,6 z" fill="#cc0000"></path>
+                  </marker>
+                  <marker
+                    id="arrow-gray"
+                    markerWidth="8"
+                    markerHeight="8"
+                    refX="6"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <path d="M0,0 L6,3 L0,6 z" fill="#6b6b6b"></path>
+                  </marker>
+                </defs>
+
+                <!-- inbound blocked, edge side -->
+                <rect
+                  x="110"
+                  y="8"
+                  width="180"
+                  height="38"
+                  fill="none"
+                  stroke="#4a4a4a"
+                  stroke-dasharray="4 4"></rect>
+                <text x="200" y="32" fill="#8a8a8a" font-size="11" text-anchor="middle"
+                  >INBOUND :: BLOCKED</text
+                >
+                <line
+                  x1="200"
+                  y1="46"
+                  x2="200"
+                  y2="98"
+                  stroke="#4a4a4a"
+                  stroke-dasharray="4 4"></line>
+                <g stroke="#cc0000" stroke-width="2">
+                  <line x1="192" y1="64" x2="208" y2="80"></line>
+                  <line x1="208" y1="64" x2="192" y2="80"></line>
+                </g>
+
+                <!-- internet, cloud side -->
+                <rect x="480" y="8" width="180" height="38" fill="none" stroke="#6b6b6b"
+                ></rect>
+                <text x="570" y="32" fill="#e5e5e5" font-size="11" text-anchor="middle"
+                  >INTERNET :: TLS 443</text
+                >
+                <line
+                  x1="570"
+                  y1="46"
+                  x2="570"
+                  y2="98"
+                  stroke="#cc0000"
+                  stroke-width="1.5"
+                  marker-end="url(#arrow-red)"></line>
+
+                <!-- EDGE NODE -->
+                <rect x="20" y="100" width="320" height="220" fill="none" stroke="#6b6b6b"
+                ></rect>
+                <text x="36" y="124" fill="#cc0000" font-size="11"
+                  >EDGE NODE :: k3s agent</text
+                >
+                <text x="36" y="142" fill="#7a7a7a" font-size="10"
+                  >Proxmox VE &#183; Ubuntu 24.04 &#183; behind CGNAT</text
+                >
+                <rect x="36" y="158" width="288" height="34" fill="#141414" stroke="#3a3a3a"
+                ></rect>
+                <text x="50" y="180" fill="#d5d5d5" font-size="10"
+                  >workload pods &#183; HPA-scaled replicas</text
+                >
+                <rect x="36" y="200" width="140" height="34" fill="#141414" stroke="#3a3a3a"
+                ></rect>
+                <text x="50" y="222" fill="#d5d5d5" font-size="10">node-exporter</text>
+                <rect x="184" y="200" width="140" height="34" fill="#141414" stroke="#3a3a3a"
+                ></rect>
+                <text x="198" y="222" fill="#d5d5d5" font-size="10">local-path PVs</text>
+                <rect x="36" y="242" width="288" height="34" fill="#141414" stroke="#3a3a3a"
+                ></rect>
+                <text x="50" y="264" fill="#d5d5d5" font-size="10"
+                  >tailscaled &#183; outbound-only</text
+                >
+                <text x="36" y="298" fill="#5a5a5a" font-size="9"
+                  >CHAOS TARGET :: node drains, pod kills, power loss</text
+                >
+
+                <!-- mesh link -->
+                <line
+                  x1="340"
+                  y1="210"
+                  x2="400"
+                  y2="210"
+                  stroke="#cc0000"
+                  stroke-width="1.5"
+                  stroke-dasharray="5 3"></line>
+                <text
+                  x="370"
+                  y="200"
+                  fill="#cc0000"
+                  font-size="9"
+                  text-anchor="middle">MESH</text
+                >
+                <text
+                  x="370"
+                  y="226"
+                  fill="#7a7a7a"
+                  font-size="8"
+                  text-anchor="middle">WireGuard</text
+                >
+
+                <!-- CLOUD NODE -->
+                <rect x="400" y="100" width="340" height="220" fill="none" stroke="#6b6b6b"
+                ></rect>
+                <text x="416" y="124" fill="#cc0000" font-size="11"
+                  >CLOUD NODE :: k3s server</text
+                >
+                <text x="416" y="142" fill="#7a7a7a" font-size="10"
+                  >Hetzner / Azure VM &#183; control plane &#183; public IP</text
+                >
+                <rect x="416" y="158" width="308" height="34" fill="#141414" stroke="#3a3a3a"
+                ></rect>
+                <text x="430" y="180" fill="#d5d5d5" font-size="10"
+                  >ingress-nginx + cert-manager (Let's Encrypt)</text
+                >
+                <rect x="416" y="200" width="150" height="34" fill="#141414" stroke="#3a3a3a"
+                ></rect>
+                <text x="430" y="222" fill="#d5d5d5" font-size="10">Keycloak (OIDC)</text>
+                <rect x="574" y="200" width="150" height="34" fill="#141414" stroke="#3a3a3a"
+                ></rect>
+                <text x="588" y="222" fill="#d5d5d5" font-size="10">PostgreSQL</text>
+                <rect x="416" y="242" width="308" height="34" fill="#141414" stroke="#3a3a3a"
+                ></rect>
+                <text x="430" y="264" fill="#d5d5d5" font-size="10"
+                  >kube-prometheus-stack &#183; Prometheus + Grafana</text
+                >
+                <text x="416" y="298" fill="#5a5a5a" font-size="9"
+                  >metrics-server &rarr; HorizontalPodAutoscaler</text
+                >
+
+                <!-- bottom: CI/CD + IaC -->
+                <line
+                  x1="190"
+                  y1="368"
+                  x2="190"
+                  y2="322"
+                  stroke="#6b6b6b"
+                  marker-end="url(#arrow-gray)"></line>
+                <line
+                  x1="570"
+                  y1="368"
+                  x2="570"
+                  y2="322"
+                  stroke="#6b6b6b"
+                  marker-end="url(#arrow-gray)"></line>
+
+                <rect x="20" y="370" width="340" height="54" fill="none" stroke="#3a3a3a"
+                ></rect>
+                <text x="36" y="392" fill="#cc0000" font-size="10">CI/CD</text>
+                <text x="36" y="410" fill="#8a8a8a" font-size="9"
+                  >GitHub Actions &rarr; kubeconform &rarr; GHCR image push</text
+                >
+
+                <rect x="400" y="370" width="340" height="54" fill="none" stroke="#3a3a3a"
+                ></rect>
+                <text x="416" y="392" fill="#cc0000" font-size="10"
+                  >INFRASTRUCTURE AS CODE</text
+                >
+                <text x="416" y="410" fill="#8a8a8a" font-size="9"
+                  >Terraform &#183; hcloud + azurerm providers</text
+                >
+              </svg>
+            </div>
+            <p class="case-caption">
+              The edge node accepts no inbound connections at all. Everything it
+              serves leaves through an outbound WireGuard session it opens
+              itself; the public surface is a single TLS ingress on the cloud
+              node.
+            </p>
+          </section>
+
+          <section>
+            <h3 class="case-h3">The Goal</h3>
+            <p class="case-text">
+              I wanted a cluster that behaves like a real one &mdash; two machines
+              on different networks, one of them behind CGNAT with no way to
+              accept inbound traffic, sharing a control plane and a single
+              public entry point. Anything that only works on one laptop teaches
+              you nothing about scheduling, networking or failure.
+            </p>
+          </section>
+
+          <section>
+            <h3 class="case-h3">Build</h3>
+            <ul class="case-list">
+              <li>
+                <span class="case-k">Cluster:</span> K3s server on the cloud VM,
+                K3s agent on the edge node, joined over the Tailscale mesh so the
+                node-to-node traffic is encrypted and neither side needs an open
+                port.
+              </li>
+              <li>
+                <span class="case-k">Releases:</span> every workload installed
+                with Helm rather than loose <code>kubectl apply</code>, so values
+                are the only thing that differs between the Hetzner and Azure
+                deployments.
+              </li>
+              <li>
+                <span class="case-k">Ingress &amp; TLS:</span> ingress-nginx as
+                the single entry point, cert-manager issuing and renewing Let's
+                Encrypt certificates automatically.
+              </li>
+              <li>
+                <span class="case-k">Observability:</span> kube-prometheus-stack
+                for Prometheus, Grafana and the node exporters &mdash; the
+                dashboards are how I found out what the cluster was actually
+                doing rather than what I assumed.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="case-h3">Autoscaling Under Load</h3>
+            <p class="case-text">
+              A HorizontalPodAutoscaler drives the deployment off live CPU
+              metrics. I load it with ApacheBench and watch the reaction on
+              Grafana rather than trusting the manifest.
+            </p>
+            <!-- VERIFY: every number below must match your own measured run.
+                 Screenshot the Grafana dashboard during the run for the README. -->
+            <ul class="case-list">
+              <li>
+                <span class="case-k">Load:</span>
+                <span class="ph-inline">[N]</span> concurrent clients,
+                <span class="ph-inline">[N]</span> total requests via ApacheBench.
+              </li>
+              <li>
+                <span class="case-k">Reaction:</span> scaled from 2 to
+                <span class="ph-inline">8</span> replicas in
+                <span class="ph-inline">[N]</span> seconds, spreading pods across
+                both nodes.
+              </li>
+              <li>
+                <span class="case-k">Recovery:</span> scaled back down after the
+                stabilisation window once the load stopped.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="case-h3">Chaos Engineering &mdash; The Useful Failure</h3>
+            <div class="border border-gray-800 p-5">
+              <h4 class="font-serif text-lg mb-2">
+                The edge node suspended itself mid-test
+              </h4>
+              <p class="case-text !mb-3">
+                Alongside the deliberate node drains and pod kills, I had one
+                genuinely unplanned failure: the physical edge node went to sleep
+                while under load. The cluster did exactly the right thing &mdash;
+                the node went <code>NotReady</code>, its pods were evicted, and
+                the deployment rescheduled them onto the cloud node without a
+                request being dropped.
+              </p>
+              <p class="case-text !mb-3">
+                <span class="case-k">The part worth understanding:</span> when
+                the edge node woke up and rejoined, the pods did
+                <em>not</em> come back to it. The deployment's replica count was
+                already satisfied, and Kubernetes has no trigger that
+                re-evaluates placement for pods that are already running happily.
+                Rebalancing is not a scheduler feature &mdash; it needs something
+                external such as a descheduler, or pod topology spread
+                constraints applied at admission time.
+              </p>
+              <p class="case-text !mb-0 text-gray-400">
+                That distinction &mdash; between "the scheduler failed" and "the
+                scheduler was never asked again" &mdash; is the single most useful
+                thing this cluster has taught me.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h3 class="case-h3">CI/CD and Infrastructure as Code</h3>
+            <ul class="case-list">
+              <li>
+                <span class="case-k">GitHub Actions:</span> every push runs the
+                unit tests and validates the Kubernetes manifests with
+                kubeconform before anything else, then builds the image from a
+                multi-stage <code>Dockerfile</code> and pushes it to GHCR on tag.
+                A broken manifest or a failing test stops in CI, not in the
+                cluster.
+              </li>
+              <li>
+                <span class="case-k">Terraform:</span> the VMs, networks and
+                firewall rules are declared in HCL against the
+                <code>hcloud</code> provider, with an <code>azurerm</code> variant
+                for the Azure deployment. Rebuilding the cluster from nothing is
+                an <code>apply</code>, not an afternoon.
+              </li>
+              <li>
+                <span class="case-k">Portability check:</span> I redeployed the
+                identical Helm releases onto Azure VMs to prove nothing had
+                quietly grown roots in one provider's assumptions.
+              </li>
+            </ul>
+          </section>
+
+          <div class="pt-2">
+            <a
+              href="https://github.com/akos050607/K3d-chaos-cluster"
+              target="_blank"
+              rel="noopener"
+              class="case-cta">Repository on GitHub -></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ Case study modal: Keycloak identity ============ -->
+    <div
+      id="keycloak-modal"
+      class="case-modal fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="keycloak-modal-title"
+    >
+      <div data-modal-close class="absolute inset-0 bg-black/80 backdrop-blur-sm">
+      </div>
+
+      <div class="case-modal-sheet">
+        <div class="case-modal-head">
+          <div>
+            <div class="mono-label-red !mb-2">[ Case_Study ]</div>
+            <h2
+              id="keycloak-modal-title"
+              class="font-serif text-2xl md:text-3xl leading-tight"
+            >
+              Putting a Real Identity Provider in Front of My Own Applications
+            </h2>
+          </div>
+          <button
+            type="button"
+            data-modal-close
+            aria-label="Close case study"
+            class="case-modal-close">✕</button
+          >
+        </div>
+
+        <div class="px-6 py-8 md:px-10 md:py-10 space-y-10">
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="border border-gray-800 p-3">
+              <div class="font-mono text-lg md:text-xl text-nothing-red">OIDC</div>
+              <div class="stat-cap">Auth Code + PKCE</div>
+            </div>
+            <div class="border border-gray-800 p-3">
+              <div class="font-mono text-lg md:text-xl text-nothing-red">SAML</div>
+              <div class="stat-cap">2.0 Client</div>
+            </div>
+            <div class="border border-gray-800 p-3">
+              <div class="font-mono text-lg md:text-xl text-nothing-red">0</div>
+              <div class="stat-cap">Passwords In My App</div>
+            </div>
+          </div>
+
+          <section>
+            <h3 class="case-h3">Why</h3>
+            <p class="case-text">
+              Every project I had written stored its own users and its own
+              password hashes. That is the wrong answer in almost every
+              production environment, and it meant I had never actually
+              implemented the protocols that enterprises run on. So I stopped
+              writing authentication and started delegating it: one Keycloak
+              realm on my cluster, and my applications reduced to consumers of
+              tokens they did not issue.
+            </p>
+          </section>
+
+          <section>
+            <h3 class="case-h3">Deployment</h3>
+            <ul class="case-list">
+              <li>
+                <span class="case-k">Helm:</span> Keycloak installed as a Helm
+                release on the K3s cluster, in its own namespace, with values
+                pinned in the repository rather than typed at a prompt.
+              </li>
+              <li>
+                <span class="case-k">Persistence:</span> a PostgreSQL instance
+                with a PersistentVolumeClaim behind it, so realm configuration,
+                clients and users survive a pod restart &mdash; the default
+                in-memory database quietly loses everything, which I found out the
+                obvious way.
+              </li>
+              <li>
+                <span class="case-k">Exposure:</span> published through the
+                existing ingress-nginx with a cert-manager certificate. Keycloak
+                refuses to issue tokens over plain HTTP for good reason, so TLS
+                was a prerequisite rather than a finishing touch.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="case-h3">The Authorization Code Flow, End to End</h3>
+            <p class="case-text">
+              SpendSmart &mdash; my existing expense-tracking app &mdash; became
+              the protected resource. It no longer knows what a password is.
+            </p>
+            <ol class="case-steps">
+              <li>
+                Unauthenticated request hits the app; it redirects the browser to
+                the Keycloak realm's authorization endpoint with a client ID,
+                requested scopes, a redirect URI and a PKCE challenge.
+              </li>
+              <li>
+                Keycloak authenticates the user itself and redirects back with a
+                single-use authorization code.
+              </li>
+              <li>
+                The app exchanges that code, plus the PKCE verifier, for an ID
+                token and an access token at the token endpoint &mdash; a
+                back-channel call the browser never sees.
+              </li>
+              <li>
+                The app validates the token signature against the realm's JWKS
+                endpoint, checks issuer, audience and expiry, and maps the realm
+                roles in the token onto its own authorisation rules.
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="case-h3">What Actually Broke</h3>
+            <ul class="case-list">
+              <li>
+                <span class="case-k">Redirect URI mismatch:</span> the most common
+                failure in the entire protocol, and deliberately unforgiving
+                &mdash; the registered URI has to match exactly, because a loose
+                match is an open redirect and a token theft primitive.
+              </li>
+              <li>
+                <span class="case-k">Proxy headers:</span> behind an ingress,
+                Keycloak builds its issuer and redirect URLs from the forwarded
+                headers. Until the proxy mode was configured correctly it
+                generated internal-looking URLs that the browser could not reach.
+              </li>
+              <li>
+                <span class="case-k">Clock skew:</span> token validation compares
+                <code>exp</code> and <code>iat</code> against the verifying
+                machine's clock. A drifting node produces tokens that are somehow
+                already expired, or not yet valid.
+              </li>
+              <li>
+                <span class="case-k">Header buffer sizes:</span> tokens carrying a
+                lot of role claims outgrew the ingress's default header buffer,
+                which surfaces as an opaque 502 rather than anything mentioning
+                tokens.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="case-h3">OIDC and SAML, Side by Side</h3>
+            <p class="case-text">
+              I registered a second client using SAML 2.0 against the same realm
+              specifically so I would have a first-hand opinion rather than a
+              memorised one.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="border border-gray-800 p-4">
+                <div class="mono-label-red !mb-3 !text-[10px]">[ OIDC ]</div>
+                <p class="case-text !text-xs !mb-0">
+                  JSON and JWTs over a REST-shaped flow. Light enough for SPAs and
+                  mobile clients, PKCE covers public clients that cannot keep a
+                  secret. The default choice for anything new.
+                </p>
+              </div>
+              <div class="border border-gray-800 p-4">
+                <div class="mono-label-red !mb-3 !text-[10px]">[ SAML 2.0 ]</div>
+                <p class="case-text !text-xs !mb-0">
+                  Signed XML assertions over browser POST bindings. Heavier, but
+                  it is what a large amount of existing enterprise software
+                  actually speaks &mdash; which is why "legacy" is a description,
+                  not a reason to avoid learning it.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3 class="case-h3">What This Changed</h3>
+            <p class="case-text">
+              The interesting part was never the login screen. It was
+              understanding that identity is infrastructure: a component you
+              deploy, secure, persist, expose over TLS and monitor like any other
+              &mdash; and that once it exists, every other service you run gets to
+              stop inventing its own answer to the same question.
+            </p>
+          </section>
+
+          <!-- PLACEHOLDER: publish the repo and put the real URL here -->
+          <div class="pt-2">
+            <span class="case-cta ph-inline">[ ADD REPOSITORY LINK ]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Case study modal: full write-up for the remote-streaming project -->
     <div
       id="streaming-modal"
-      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8"
+      class="case-modal fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8"
       role="dialog"
       aria-modal="true"
       aria-labelledby="streaming-modal-title"
     >
       <div
-        id="streaming-modal-backdrop"
+        data-modal-close
         class="absolute inset-0 bg-black/80 backdrop-blur-sm"
       >
       </div>
 
-      <div
-        class="relative z-10 w-full max-w-3xl max-h-[88vh] overflow-y-auto bg-[#0a0a0a] border border-gray-800 text-white shadow-[0_0_60px_rgba(255,51,51,0.15)]"
-      >
-        <div
-          class="sticky top-0 z-10 flex items-start justify-between gap-4 bg-[#0a0a0a]/95 backdrop-blur border-b border-gray-800 px-6 py-5 md:px-10"
-        >
+      <div class="case-modal-sheet">
+        <div class="case-modal-head">
           <div>
             <div class="mono-label-red !mb-2">[ Case_Study ]</div>
             <h2
               id="streaming-modal-title"
               class="font-serif text-2xl md:text-3xl leading-tight"
             >
-              Bypassing Enterprise NAT for Ultra-Low Latency Remote Streaming
+              Traversing Enterprise CGNAT Without Opening a Single Inbound Port
             </h2>
           </div>
           <button
-            id="streaming-modal-close"
             type="button"
+            data-modal-close
             aria-label="Close case study"
-            class="shrink-0 w-10 h-10 flex items-center justify-center border border-gray-700 text-gray-400 hover:border-nothing-red hover:text-nothing-red transition-colors font-mono text-lg"
+            class="case-modal-close"
           >
             ✕
           </button>
@@ -579,11 +1584,11 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
               The Challenge
             </h3>
             <p class="font-sans text-sm text-gray-300 leading-relaxed">
-              Deploying a self-hosted, virtualized remote desktop environment
-              capable of extremely low-latency (&lt;25ms) graphic streaming
-              (Sunshine/Moonlight) behind a strict university enterprise firewall
-              (CGNAT). The network strictly blocks inbound connections and
-              utilizes aggressive UDP timeouts.
+              Reaching a self-hosted, virtualised remote desktop environment from
+              outside a strict university enterprise firewall (CGNAT), while
+              holding end-to-end latency under 25&nbsp;ms. The network blocks all
+              inbound connections and applies aggressive UDP timeouts &mdash; the
+              same constraint any service behind carrier-grade NAT faces.
             </p>
           </section>
 
@@ -599,14 +1604,14 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                 running a dedicated Ubuntu 24.04 VM.
               </li>
               <li class="border-l border-gray-800 pl-4">
-                <span class="text-white font-medium">Graphic Stack:</span> Nvidia
-                hardware encoding (NVENC), testing HEVC/AV1 profiles, coupled with
-                headless display emulation.
+                <span class="text-white font-medium">Encoding Stack:</span> Nvidia
+                hardware encoding (NVENC), benchmarking HEVC and AV1 profiles
+                against bandwidth and latency, with headless display emulation.
               </li>
               <li class="border-l border-gray-800 pl-4">
                 <span class="text-white font-medium">Network Routing:</span> Nginx
-                Proxy Manager for standard web services, alongside a custom
-                tunneling solution for UDP/TCP game streaming traffic.
+                Proxy Manager for standard HTTP services, alongside a custom
+                tunnelling solution for the latency-sensitive UDP/TCP traffic.
               </li>
               <li class="border-l border-gray-800 pl-4">
                 <span class="text-white font-medium">Remote Gateway:</span> A
@@ -640,7 +1645,7 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
               </p>
               <p class="font-sans text-sm text-gray-400 leading-relaxed mt-2">
                 <span class="text-white font-medium">The Impact:</span> Network
-                latency spiked from an acceptable 18ms to an unplayable 60ms+,
+                latency spiked from an acceptable 18ms to an unusable 60ms+,
                 introducing massive jitter and packet loss due to the geographical
                 detour (Budapest &rarr; Frankfurt &rarr; Budapest).
               </p>
@@ -666,7 +1671,7 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
                   a persistent, outbound-only tunnel to the VPS.
                 </li>
                 <li>
-                  Mapped the specific Sunshine ports (TCP: 47984, 47989, 48010;
+                  Mapped the specific service ports (TCP: 47984, 47989, 48010;
                   UDP: 47998-48002, 48010) through the tunnel directly into the VM.
                 </li>
               </ul>
@@ -694,10 +1699,12 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
               </li>
               <li class="border-l border-nothing-red/60 pl-4">
                 <span class="text-white font-medium">Bandwidth Management:</span>
-                Discovered the ISP's 32GB outbound quota. Optimized the stream by
-                switching to the AV1 encoder and reducing the resolution to
-                1080p@120Hz, cutting the bandwidth requirement by ~40% (down to 12
-                Mbps) without sacrificing perceived fluidity.
+                Discovered the VPS provider's 32&nbsp;GB outbound quota, which
+                the stream would have exhausted. Switching to the AV1 encoder and
+                tuning the output profile cut the bandwidth requirement by ~40%
+                (down to 12&nbsp;Mbps) with no perceptible quality loss &mdash; a
+                capacity constraint solved by measurement rather than by paying
+                for more egress.
               </li>
             </ul>
           </section>
@@ -789,40 +1796,48 @@ import ProfileHologram from "../components/ProfileHologram.jsx";
       calculateTarget();
       renderSmoothAnim();
 
-      // Remote-streaming case study modal
-      const streamingCard = document.getElementById("streaming-card");
-      const streamingModal = document.getElementById("streaming-modal");
-      const streamingClose = document.getElementById("streaming-modal-close");
-      const streamingBackdrop = document.getElementById(
-        "streaming-modal-backdrop",
-      );
-
-      const openStreamingModal = () => {
-        if (!streamingModal) return;
-        streamingModal.classList.remove("hidden");
-        streamingModal.classList.add("flex");
+      // Case study modals. Any element with data-modal-open="<id>" opens that
+      // dialog; anything with data-modal-close inside it closes the dialog.
+      const openModal = (modal) => {
+        if (!modal) return;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
         document.body.style.overflow = "hidden";
+        // Always open at the top, and focus without letting the browser scroll for us.
+        const sheet = modal.querySelector(".case-modal-sheet");
+        if (sheet) sheet.scrollTop = 0;
+        modal.querySelector("button[data-modal-close]")?.focus({ preventScroll: true });
       };
-      const closeStreamingModal = () => {
-        if (!streamingModal) return;
-        streamingModal.classList.add("hidden");
-        streamingModal.classList.remove("flex");
+
+      const closeModal = (modal) => {
+        if (!modal) return;
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
         document.body.style.overflow = "";
       };
 
-      streamingCard?.addEventListener("click", openStreamingModal);
-      streamingCard?.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openStreamingModal();
-        }
+      document.querySelectorAll("[data-modal-open]").forEach((trigger) => {
+        const modal = document.getElementById(
+          trigger.getAttribute("data-modal-open"),
+        );
+        trigger.addEventListener("click", () => openModal(modal));
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(modal);
+          }
+        });
       });
-      streamingClose?.addEventListener("click", closeStreamingModal);
-      streamingBackdrop?.addEventListener("click", closeStreamingModal);
+
+      document.querySelectorAll("[data-modal-close]").forEach((el) => {
+        el.addEventListener("click", () => closeModal(el.closest(".case-modal")));
+      });
+
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && streamingModal && !streamingModal.classList.contains("hidden")) {
-          closeStreamingModal();
-        }
+        if (e.key !== "Escape") return;
+        document
+          .querySelectorAll(".case-modal:not(.hidden)")
+          .forEach((m) => closeModal(m));
       });
     </script>
   </body>
