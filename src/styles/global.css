@@ -10,16 +10,10 @@
   }
 }
 
-/* PLACEHOLDER MARKER
-   Anything wrapped in <span class="ph-inline"> is a value you must replace
-   before this site goes in front of a recruiter. Highlighted yellow so it is
-   impossible to miss. Grep for `ph-inline` to find every one of them.
-   Delete this rule only once no placeholders remain. */
-.ph-inline {
-  background: #fff28a !important;
-  color: #000 !important;
-  box-shadow: 0 0 0 2px #fff28a;
-  font-weight: 600;
+/* Keyboard focus. Same red as everything else, never suppressed. */
+:focus-visible {
+  outline: 2px solid #cc0000;
+  outline-offset: 2px;
 }
 
 .dot-grid-overlay {
@@ -73,8 +67,48 @@
   .core-spin,
   .core-spin-slow,
   .core-pulse,
-  .hardware-drop {
-    animation: none;
+  .hardware-drop,
+  .live-dot,
+  .animate-pulse,
+  .case-progress-badge::before {
+    animation: none !important;
+  }
+
+  /* The scroll-driven slide-fade is written as inline styles by the driver
+     in index.astro; it stops writing them under reduced motion, and these
+     unwind anything already on the element. */
+  #section-projects,
+  #section-tech {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* The 400vh scroll-hijack is a desktop affordance. On a phone it is a long
+   blank scrub, so below 768px the two sections become a plain stacked scroll.
+   Everything here undoes the sticky/absolute layer, nothing restyles it. */
+@media (max-width: 767px) {
+  #slide-fade-wrapper,
+  #slide-fade-wrapper > div {
+    position: static !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  #section-projects,
+  #section-tech {
+    position: static !important;
+    height: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    box-shadow: none !important;
+  }
+  #section-projects .project-grid {
+    max-height: none;
+    height: auto;
+  }
+  /* The vertical "scroll" cue anchors to a layer that no longer exists. */
+  #section-projects > div:last-child {
+    display: none;
   }
 }
 .project-link {
@@ -233,6 +267,25 @@
   .case-modal-close {
     @apply shrink-0 w-10 h-10 flex items-center justify-center border border-gray-700
            text-gray-400 hover:border-nothing-red hover:text-nothing-red transition-colors font-mono text-lg;
+  }
+  /* Shown in a case study header when the build behind it is still ongoing.
+     Deliberately only inside the modal — the project grid stays uncluttered. */
+  .case-progress-badge {
+    @apply inline-flex items-center gap-1.5 shrink-0 font-mono text-[10px] uppercase
+           tracking-wider text-nothing-red bg-nothing-red/10 border border-nothing-red/50
+           px-2 py-0.5 leading-none;
+  }
+  .case-progress-badge::before {
+    content: "";
+    @apply w-1.5 h-1.5 rounded-full bg-nothing-red animate-pulse;
+  }
+  /* Nothing is running behind this one yet — dashed, and the dot holds
+     still so it does not read as live activity. */
+  .case-progress-badge-planned {
+    @apply border-dashed bg-transparent;
+  }
+  .case-progress-badge-planned::before {
+    @apply animate-none;
   }
   .case-h3 {
     @apply font-mono text-xs uppercase tracking-widest text-nothing-red mb-3;

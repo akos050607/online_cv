@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run verify:clean",
+    "verify:clean": "! grep -rniE \"VERIFY:|(^|[^-:])PLACEHOLDER|ph-inline|highest-leverage|recruiter screening|Ordering is deliberate\" dist/",
     "preview": "astro preview",
     "astro": "astro"
   },
